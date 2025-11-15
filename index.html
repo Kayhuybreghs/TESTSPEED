@@ -4,11 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KHCustomWeb - Webdesign voor ondernemers in Limburg</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="navbar.css">
-  <link rel="stylesheet" href="footer.css">
-  <link rel="stylesheet" href="/css/faq.css">
-  <link rel="stylesheet" href="/css/works-story.css">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#fff;color:#2C3E50;min-height:100vh;padding-top:80px}
+    body::before{content:'';position:absolute;top:0;left:0;right:0;height:100vh;max-height:900px;background-image:url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='waveGrad' x1='0%25' y1='0%25' x2='0%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23FFB399;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23FFCCB3;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0,320 Q300,270 600,330 T1200,300 T1800,350 L1800,0 L0,0 Z' fill='url(%23waveGrad)'/%3E%3C/svg%3E");background-size:100% 100%;background-position:top center;background-repeat:no-repeat;pointer-events:none;z-index:0}
+    .sticky-navbar{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;background:rgba(255,255,255,.75);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.3);border-radius:60px;padding:0;max-width:1200px;width:calc(100% - 64px);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+    .navbar-container{max-width:100%;margin:0 auto;padding:12px 32px;display:flex;align-items:center;justify-content:space-between}
+    .navbar-logo-section{display:flex;align-items:center;gap:16px;text-decoration:none}
+    .navbar-logo-wrapper{width:48px;height:48px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .navbar-logo{width:100%;height:100%;object-fit:contain}
+    .navbar-brand-text{font-size:20px;font-weight:600;color:#2C3E50}
+    .hero{text-align:center;padding:80px 20px 120px;max-width:1000px;margin:0 auto;position:relative}
+    .hero-title{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;margin-bottom:24px;line-height:1.1}
+  </style>
+
+  <link rel="preload" href="/khcustomweb_logo.webp" as="image">
+  <link rel="preload" href="combined.css" as="style">
+
+  <link rel="stylesheet" href="combined.css" media="print" onload="this.media='all';this.onload=null">
+  <noscript>
+    <link rel="stylesheet" href="combined.css">
+  </noscript>
+
+  <script>
+    !function(e){"use strict";var t=function(t,n,o,i){var r,d=e.document,a=d.createElement("link");if(n)r=n;else{var l=(d.body||d.getElementsByTagName("head")[0]).childNodes;r=l[l.length-1]}var s=d.styleSheets;if(i)for(var c in i)i.hasOwnProperty(c)&&a.setAttribute(c,i[c]);a.rel="stylesheet",a.href=t,a.media="only x",function e(t){if(d.body)return t();setTimeout(function(){e(t)})}(function(){r.parentNode.insertBefore(a,n?r:r.nextSibling)});var f=function(e){for(var t=a.href,n=s.length;n--;)if(s[n].href===t)return e();setTimeout(function(){f(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=o||"all"}),a.onloadcssdefined=f,f(function(){a.media!==o&&(a.media=o)}),a};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);
+  </script>
 </head>
 <body>
   <!-- Sticky Navbar -->
@@ -1875,7 +1896,7 @@ Google Search Console en Google Analytics worden netjes ingericht. Wil je zelf i
     }
   </style>
 
-  <script src="/js/faq.js"></script>
-  <script src="/js/works-story.js"></script>
+  <script src="/js/faq.js" defer></script>
+  <script src="/js/works-story.js" defer></script>
 </body>
 </html>
