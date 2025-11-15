@@ -2614,7 +2614,7 @@ body::before {
   }
 
   .hero {
-    padding: 24px 0 32px;
+    padding: 32px 0 40px;
     max-width: 100%;
   }
 
@@ -2760,20 +2760,7 @@ body::before {
   .bottom-section {
     grid-template-columns: 1fr;
     gap: 16px;
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .features-column {
-    order: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .card-response-time {
-    order: 2;
+    margin-top: 48px;
   }
 
   .card-kpi,
@@ -2782,14 +2769,10 @@ body::before {
     display: none;
   }
 
-  .container {
-    min-height: 100vh;
+  .features-column {
     display: flex;
     flex-direction: column;
-  }
-
-  .hero {
-    flex-shrink: 0;
+    gap: 16px;
   }
 
   .feature-card {
