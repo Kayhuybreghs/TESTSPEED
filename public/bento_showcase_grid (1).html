@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bento Hover Focus Grid – Scroll Proof Animation</title>
+<style>
+  :root{
+    --gap:20px;--r:24px;
+    --shadow:0 10px 30px rgba(17,24,39,.10);
+    --highlight:#ff884d;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  body{margin:0;display:flex;justify-content:center;align-items:center;height:200vh;background:#f6f6f6;font-family:sans-serif}
+  .grid{position:relative;width:500px;height:500px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:var(--gap);transition:all .6s ease;}
+  .tile{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:transform .7s var(--ease), filter .4s var(--ease);cursor:pointer;perspective:800px;}
+  .tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease), filter .7s var(--ease);transform:translateZ(0);filter:brightness(0.9) contrast(1.1) saturate(1.2);}
+  .tile:hover img{transform:scale(1.08) rotateX(6deg) rotateY(-6deg);filter:brightness(1.05) contrast(1.15) saturate(1.25);}
+
+  .tile::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,rgba(255,255,255,0.12),transparent 70%);opacity:0;transition:opacity .4s ease;}
+  .tile:hover::after{opacity:1;}
+
+  .tile .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.0),rgba(0,0,0,.45) 60%);opacity:0;transition:opacity .45s var(--ease)}
+  .tile .kpi{position:absolute;left:12px;top:12px;background:#fff;color:#111;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700;box-shadow:0 6px 18px rgba(17,24,39,.12)}
+  .tile .content{position:absolute;left:16px;right:16px;bottom:16px;color:#fff;opacity:0;transform:translateY(10px);transition:opacity .45s var(--ease), transform .45s var(--ease)}
+  .tile .title{margin:0 0 6px 0;font-size:18px;font-weight:700}
+  .tile .desc{margin:0 0 12px 0;font-size:13px;opacity:.95}
+  .cta{display:inline-flex;align-items:center;gap:8px;background:var(--highlight);color:#fff;border:none;border-radius:999px;padding:10px 16px;font-weight:800;text-decoration:none;box-shadow:0 10px 24px rgba(255,136,77,.35)}
+
+  .grid.intro .tile{opacity:0;transform:scale(.94)}
+  .grid.intro.ready .tile{opacity:1;transform:none;transition:transform .60s var(--ease), opacity .45s ease}
+  .grid.intro.ready .tile:nth-child(1){transition-delay:60ms}
+  .grid.intro.ready .tile:nth-child(2){transition-delay:160ms}
+  .grid.intro.ready .tile:nth-child(3){transition-delay:260ms}
+  .grid.intro.ready .tile:nth-child(4){transition-delay:360ms}
+
+  .state-1 .tile:nth-child(1){transform:translate(20%,20%) scale(1.55);z-index:3}
+  .state-2 .tile:nth-child(2){transform:translate(-20%,20%) scale(1.55);z-index:3}
+  .state-3 .tile:nth-child(3){transform:translate(20%,-20%) scale(1.55);z-index:3}
+  .state-4 .tile:nth-child(4){transform:translate(-20%,-20%) scale(1.55);z-index:3}
+  .state-1 .tile:nth-child(1) .veil,
+  .state-2 .tile:nth-child(2) .veil,
+  .state-3 .tile:nth-child(3) .veil,
+  .state-4 .tile:nth-child(4) .veil{opacity:1}
+  .state-1 .tile:nth-child(1) .content,
+  .state-2 .tile:nth-child(2) .content,
+  .state-3 .tile:nth-child(3) .content,
+  .state-4 .tile:nth-child(4) .content{opacity:1;transform:none}
+</style>
+</head>
+<body>
+  <div class="grid intro" id="grid">
+    <div class="tile"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80"><span class="kpi">0.9s · Core Web Vitals</span><div class="veil"></div><div class="content"><h3 class="title">Website voor stukadoor</h3><p class="desc">Laat je werk verkopen met bewijs, snelheid en lokale SEO.</p><a class="cta">Bekijk live voorbeeld →</a></div></div>
+    <div class="tile"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80"><span class="kpi">+40% zichtbaarheid</span><div class="veil"></div><div class="content"><h3 class="title">Website voor dakdekker</h3><p class="desc">Technisch sterk, conversiegericht en lokaal vindbaar.</p><a class="cta">Bekijk live voorbeeld →</a></div></div>
+    <div class="tile"><img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80"><span class="kpi">99.9% uptime</span><div class="veil"></div><div class="content"><h3 class="title">Website voor hovenier</h3><p class="desc">Snel, stabiel en visueel sterk voor jouw portfolio.</p><a class="cta">Bekijk live voorbeeld →</a></div></div>
+    <div class="tile"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"><span class="kpi">-58% paginagewicht</span><div class="veil"></div><div class="content"><h3 class="title">Website voor elektricien</h3><p class="desc">Snelle laadtijden en duidelijke routes naar contact.</p><a class="cta">Bekijk live voorbeeld →</a></div></div>
+  </div>
+<script>
+  const grid = document.getElementById('grid');
+  const tiles = [...grid.querySelectorAll('.tile')];
+  const states = ['state-1','state-2','state-3','state-4'];
+
+  let tourTimers = [];
+  let tourActive = false;
+
+  function runIntro(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+      grid.classList.remove('intro');
+      return;
+    }
+    requestAnimationFrame(()=> grid.classList.add('ready'));
+    const total = 360 + 700;
+    setTimeout(()=>{
+      grid.classList.remove('intro');
+      startFocusTour();
+    }, total + 80);
+  }
+  runIntro();
+
+  const STEP_MS = 1080;
+  const GAP_MS  = 170;
+
+  function clearTour(){
+    tourTimers.forEach(t=>clearTimeout(t));
+    tourTimers = [];
+    tourActive = false;
+  }
+
+  function startFocusTour(){
+    if (tourActive) return;
+    tourActive = true;
+    let t = 0;
+
+    for (let i = 0; i < states.length; i++){
+      tourTimers.push(setTimeout(()=>{
+        grid.classList.remove(...states);
+        grid.classList.add(states[i]);
+        tiles.forEach(el=>el.classList.remove('focus'));
+        tiles[i].classList.add('focus');
+      }, t));
+
+      tourTimers.push(setTimeout(()=>{
+        grid.classList.remove(...states);
+        tiles.forEach(el=>el.classList.remove('focus'));
+      }, t + STEP_MS));
+
+      t += STEP_MS + GAP_MS;
+    }
+
+    tourTimers.push(setTimeout(()=>{
+      grid.classList.remove(...states);
+      tourActive = false;
+    }, t));
+  }
+
+  const enter = (idx)=>{
+    if (tourActive || grid.classList.contains('intro')) return;
+    grid.classList.remove(...states);
+    grid.classList.add(states[idx]);
+    tiles.forEach(t=>t.classList.remove('focus'));
+    tiles[idx].classList.add('focus');
+  };
+
+  const leave = ()=>{
+    if (tourActive || grid.classList.contains('intro')) return;
+    grid.classList.remove(...states);
+    tiles.forEach(t=>t.classList.remove('focus'));
+  };
+
+  tiles.forEach((t,i)=>{
+    t.addEventListener('mouseenter',()=> enter(i));
+    t.addEventListener('mouseleave',()=> leave());
+    t.addEventListener('click',(e)=>{
+      if (e.target.closest('.cta')) return;
+      if (tourActive || grid.classList.contains('intro')) return;
+      enter(i);
+    });
+    t.addEventListener('keydown',(e)=>{
+      if (e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        if (!tourActive && !grid.classList.contains('intro')) enter(i);
+      }
+      if (e.key === 'Escape'){
+        if (!tourActive && !grid.classList.contains('intro')) leave();
+      }
+    });
+  });
+</script>
+</body>
+</html>

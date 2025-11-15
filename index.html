@@ -1,0 +1,1881 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KHCustomWeb - Webdesign voor ondernemers in Limburg</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="css/works-story.css">
+</head>
+<body>
+  <!-- Sticky Navbar -->
+  <nav class="sticky-navbar" id="stickyNavbar">
+    <div class="navbar-container">
+      <a href="#home" class="navbar-logo-section">
+        <div class="navbar-logo-wrapper">
+          <img src="/khcustomweb_logo.webp" alt="KH Custom Web Logo" class="navbar-logo">
+        </div>
+        <span class="navbar-brand-text">KHCustomWeb</span>
+      </a>
+
+      <button class="navbar-menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="navbar-links" id="navbarLinks">
+        <a href="#home" class="navbar-link active">Home</a>
+        <a href="#diensten" class="navbar-link">Diensten</a>
+        <a href="#over-ons" class="navbar-link">Over ons</a>
+        <a href="#portfolio" class="navbar-link">Portfolio</a>
+        <a href="#contact" class="navbar-cta">
+          <span>Neem contact op</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero Section -->
+    <div class="hero">
+      <h1 class="hero-title">
+        <span class="italic">Maatwerk websites voor ondernemers </span><br>
+        <span class="italic">in Limburg die vooruit willen</span>
+      </h1>
+      <p class="hero-description"> 
+Voor zzp en mkb in Limburg die vooruit willen met een sterke website.
+      </p>
+
+      <!-- Email Form -->
+      <div class="email-section"> 
+        <p class="email-label">Gratis meedenken over jouw website?</p>
+        <form class="email-form" id="emailForm">
+          <div class="email-input-wrapper">
+            <svg class="email-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <input type="email" placeholder="John@gmail.com" class="email-input" id="emailInput" required>
+          </div>
+          <button type="submit" class="email-submit">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+        <p class="email-label">Vul je e-mail in en ontvang binnen 24 uur reactie.</p>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+      <!-- Column 1 - Response Time Card -->
+      <div class="card card-response-time" id="responseTimeCard">
+        <div class="rt-overlay"></div>
+        <div class="rt-glow rt-glow-1"></div>
+        <div class="rt-glow rt-glow-2"></div>
+ 
+        <div class="rt-content">
+          <div class="rt-timer-box">
+            <div class="rt-timer-overlay"></div>
+            <div class="rt-timer-glow rt-timer-glow-1"></div>
+            <div class="rt-timer-glow rt-timer-glow-2"></div>
+
+            <div class="rt-timer-header">
+              <svg class="rt-clock-icon" id="rtClock" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span class="rt-timer-label">Gemiddeld binnen 2 uur reactie test het zelf</span>
+            </div>
+
+            <div class="rt-timer-display">
+              <div class="rt-timer-unit">
+                <div class="rt-timer-value" id="rtHours" style="transition-delay: 700ms;">02</div>
+                <div class="rt-timer-unit-label" style="transition-delay: 1100ms;">uren</div>
+              </div>
+              <div class="rt-colon" style="transition-delay: 900ms;">:</div>
+              <div class="rt-timer-unit">
+                <div class="rt-timer-value" id="rtMinutes" style="transition-delay: 900ms;">14</div>
+                <div class="rt-timer-unit-label" style="transition-delay: 1300ms;">min</div>
+              </div>
+              <div class="rt-colon" style="transition-delay: 1100ms;">:</div>
+              <div class="rt-timer-unit">
+                <div class="rt-timer-value rt-seconds" id="rtSeconds">30</div>
+                <div class="rt-timer-unit-label rt-seconds-label" style="transition-delay: 1500ms;">sec</div>
+              </div>
+            </div>
+             <span class="rt-timer-label">Geen ruis. Direct antwoord. Meteen een stap vooruit.</span>
+          </div>
+
+          <div class="rt-cta-section">
+            <div class="rt-description">
+               <h3 style="text-align:center;">Word jij de volgende ondernemer<br>die vooruitgaat?</h3>
+            </div>
+            <a href="#contact" class="rt-cta-btn">
+              <span>Start meteen</span>
+              <svg class="rt-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2 - Four Features Stacked -->
+      <div class="features-column">
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-image">
+            <img src="/khcustomweb_logo.webp" alt="KH Custom Web">
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">Maatwerk voor jouw branche</h3>
+            <p class="feature-description">Elke sector van bouw tot coaching en dienstverlening
+Compleet opgeleverd.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-image">
+            <img src="/khcustomweb_logo.webp" alt="KH Custom Web">
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">Sterk in lokale SEO</h3>
+            <p class="feature-description">Scoor beter in Google in jouw regio. Ideaal voor lokale ondernemers in Limburg.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-image">
+            <img src="/khcustomweb_logo.webp" alt="KH Custom Web">
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">Voor ondernemers die willen winnen</h3>
+            <p class="feature-description">Laat je concurrenten achter met een website die wél resultaat levert. </p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-image">
+            <img src="/khcustomweb_logo.webp" alt="KH Custom Web">
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">Slimme functies geïntegreerd</h3>
+            <p class="feature-description">Offerteformulier, WhatsApp-knop of boekingssysteem.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 3 - Integrations -->
+      <div class="card card-integrations">
+        <h3 class="analytics-title">Werk slimmer.<br>met integraties</h3>
+        <div class="integration-circle">
+          <div class="center-logo center-logo-image">
+            <img src="/khcustomweb_logo_design.webp" alt="KH Custom Web">
+          </div>
+
+          <div class="circle-dashed"></div>
+
+          <div class="tech-logo tech-chatgpt">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/>
+            </svg>
+          </div>
+          <div class="tech-logo tech-instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+          </div>
+          <div class="tech-logo tech-linkedin">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </div>
+          <div class="tech-logo tech-email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </div>
+          <div class="tech-logo tech-js">JS</div>
+          <div class="tech-logo tech-html">H5</div>
+          <div class="tech-logo tech-css">CSS</div>
+          <div class="tech-logo tech-code">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 4 - Analytics -->
+      <div class="card card-analytics">
+        <h3 class="analytics-title">Groeien zonder advertenties</h3>
+        <p class="analytics-description">Organisch meer bereik via Google<br>met sterke lokale SEO en een technisch goede website.</p>
+        <div class="analytics-visual">
+          <div class="concentric-circles">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+            <div class="circle circle-4"></div>
+            <div class="circle circle-5"></div>
+            <div class="circle circle-6"></div>
+          </div>
+          <div class="analytics-chart" id="analyticsChart">
+            <div class="chart-bar" style="--bar-height: 45%;"></div>
+            <div class="chart-bar" style="--bar-height: 58%;"></div>
+            <div class="chart-bar" style="--bar-height: 52%;"></div>
+            <div class="chart-bar" style="--bar-height: 70%;"></div>
+            <div class="chart-bar" style="--bar-height: 85%;"></div>
+            <div class="chart-bar" style="--bar-height: 78%;"></div>
+            <div class="chart-bar" style="--bar-height: 88%;"></div>
+            <div class="chart-bar" style="--bar-height: 92%;"></div>
+            <div class="chart-bar" style="--bar-height: 88%;"></div>
+            <div class="chart-bar" style="--bar-height: 100%;" data-highest="true"></div>
+          </div>
+        </div>
+        <div class="visitor-count-display" id="visitorCount">0</div>
+        <div class="visitor-count-label">bezoekers/m</div>
+      </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+      <div class="how-it-works-container">
+        <h2 class="how-it-works-title">Zo werkt het</h2>
+        <p class="how-it-works-subtitle">Van eerste gesprek tot live website in 3 stappen</p>
+
+        <div class="steps-layout">
+
+          <!-- Left: Steps -->
+          <div class="steps-column">
+
+            <!-- Step 1 -->
+            <div class="step-card">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <div class="step-content">
+                <h3 class="step-title">Kennismakingsgesprek</h3>
+                <p class="step-description">
+                  We starten met een vrijblijvend gesprek om jouw doelen en wensen te bespreken.
+                  Wat wil je bereiken met je website? Welke functionaliteiten zijn belangrijk?
+                  Ik luister naar je verhaal, stel de juiste vragen en adviseer wat het beste werkt
+                  voor jouw bedrijf en doelgroep. Samen maken we een heldere briefing.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card step-featured">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="9" y1="9" x2="15" y2="15"></line>
+                  <line x1="15" y1="9" x2="9" y2="15"></line>
+                </svg>
+              </div>
+              <div class="step-content">
+                <h3 class="step-title">Design & Ontwikkeling</h3>
+                <p class="step-description">
+                  Nu ga ik aan de slag met het ontwerp en de technische realisatie. Je krijgt
+                  regelmatig tussentijdse updates zodat je het voortschrijdende werk kunt bekijken.
+                  Feedback is altijd welkom - zo pas ik details aan en stem ik af waar nodig.
+                  Samen zorgen we dat het eindresultaat precies aansluit bij je verwachtingen.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card">
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <div class="step-content">
+                <h3 class="step-title">Live & Ondersteuning</h3>
+                <p class="step-description">
+                  Je website is klaar en gaat live! Ik zorg voor een vlekkeloze lancering en regel
+                  alle technische zaken zoals hosting, SSL-certificaat en SEO-optimalisatie. Na de
+                  oplevering blijf ik beschikbaar voor vragen, kleine aanpassingen of uitbreidingen.
+                  Je staat er niet alleen voor - ook na de lancering kun je op me rekenen.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right: Laptop + KPIs -->
+          <div class="visual-column">
+            <div class="visual-wrapper">
+
+              <!-- Laptop Mockup -->
+              <div class="laptop-mockup">
+                <div class="laptop-screen">
+                  <div class="screen-header">
+                    <div class="screen-dots">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <div class="screen-url">khcustomweb.nl</div>
+                  </div>
+                  <div class="screen-content">
+                    <div class="screen-problem">
+                      <div class="problem-icon">⚠️</div>
+                      <h4 class="problem-title">Website laadt te langzaam</h4>
+                      <p class="problem-text">Bezoekers verlaten je site binnen 3 seconden</p>
+                      <a href="#branches" class="screen-cta">Bekijk branches →</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="laptop-base"></div>
+              </div>
+
+              <!-- KPIs Below Laptop -->
+              <div class="kpis-grid">
+                <div class="kpi-card">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <div class="kpi-value">1-2 dagen</div>
+                  <div class="kpi-label">Eerste contact tot offerte</div>
+                </div>
+
+                <div class="kpi-card">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <div class="kpi-value">0%</div>
+                  <div class="kpi-label">Vindt website niet binnen 3s</div>
+                </div>
+
+                <div class="kpi-card">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                  <div class="kpi-value">1 week</div>
+                  <div class="kpi-label">Design klaar voor review</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3: Eerst Kijken, Dan Pas Betalen + Collage -->
+    <section class="demo-collage-section">
+      <div class="demo-collage-container">
+        <div class="demo-content">
+          <h2 class="demo-heading">Eerst kijken, dan pas betalen</h2>
+          <p class="demo-intro">Ik weet dat woorden weinig zeggen — daarom laat ik liever <strong>zien</strong> wat ik maak. Je krijgt van mij een gratis demo van jouw website, volledig op maat en afgestemd op jouw stijl en doelen. Binnen één tot twee dagen zie je hoe jouw toekomstige homepage eruit kan zien, nog vóór je iets betaalt.</p>
+
+          <div class="demo-promise">
+            <div class="promise-item">
+              <div class="promise-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="promise-number">1-2 dagen</div>
+              <p>Zie hoe jouw toekomstige homepage eruit kan zien.</p>
+            </div>
+            <div class="promise-item">
+              <div class="promise-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div class="promise-number">0%</div>
+              <p>Vindt je het niks? Dan houdt het daar op. Vind je het goed? Dan bouwen we verder.</p>
+            </div>
+            <div class="promise-item">
+              <div class="promise-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <div class="promise-number">1 week</div>
+              <p>Je site staat online en is klaar om klanten aan te trekken.</p>
+            </div>
+          </div>
+
+          <div class="demo-footer">
+            <p class="demo-tagline">Geen risico, geen gedoe — gewoon eerst kijken, dan pas betalen. Omdat ik zeker weet dat je het verschil ziet zodra je het ziet.</p>
+          </div>
+        </div>
+
+        <div class="bento-grid-showcase bento-intro" id="bentoGrid">
+          <div class="bento-tile"><img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80" alt="Website voor stukadoor"><span class="bento-kpi">0.9s · Core Web Vitals</span><div class="bento-veil"></div><div class="bento-content"><h3 class="bento-title">Website voor stukadoor</h3><p class="bento-desc">Laat je werk verkopen met bewijs, snelheid en lokale SEO.</p><a class="bento-cta">Bekijk live voorbeeld →</a></div></div>
+          <div class="bento-tile"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="Website voor dakdekker"><span class="bento-kpi">+40% zichtbaarheid</span><div class="bento-veil"></div><div class="bento-content"><h3 class="bento-title">Website voor dakdekker</h3><p class="bento-desc">Technisch sterk, conversiegericht en lokaal vindbaar.</p><a class="bento-cta">Bekijk live voorbeeld →</a></div></div>
+          <div class="bento-tile"><img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80" alt="Website voor hovenier"><span class="bento-kpi">99.9% uptime</span><div class="bento-veil"></div><div class="bento-content"><h3 class="bento-title">Website voor hovenier</h3><p class="bento-desc">Snel, stabiel en visueel sterk voor jouw portfolio.</p><a class="bento-cta">Bekijk live voorbeeld →</a></div></div>
+          <div class="bento-tile"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Website voor elektricien"><span class="bento-kpi">-58% paginagewicht</span><div class="bento-veil"></div><div class="bento-content"><h3 class="bento-title">Website voor elektricien</h3><p class="bento-desc">Snelle laadtijden en duidelijke routes naar contact.</p><a class="bento-cta">Bekijk live voorbeeld →</a></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner Section -->
+    <section class="cta-banner-section">
+      <div class="cta-banner-container">
+        <div class="cta-banner">
+          <div class="cta-circles-container">
+            <div class="cta-circles-wrapper">
+              <div class="cta-circles">
+                <div class="cta-circle cta-circle-1"></div>
+                <div class="cta-circle cta-circle-2"></div>
+                <div class="cta-circle cta-circle-3"></div>
+                <div class="cta-circle cta-circle-4"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-floating-text-container">
+            <div class="cta-floating-text">
+              KHCUSTOMWEB. KHCUSTOMWEB. KHCUSTOMWEB. KHCUSTOMWEB. KHCUSTOMWEB.
+            </div>
+          </div>
+
+          <div class="cta-content">
+            <h2 class="cta-title">Gratis demo van jouw website?</h2>
+            <p class="cta-description">
+              Ik ontwerp binnen 1–2 dagen een op maat gemaakte homepage voor jouw bedrijf in Limburg — jij beoordeelt eerst, betaalt pas als het goed voelt.
+            </p>
+
+            <div class="cta-buttons">
+              <a href="#contact" class="cta-btn">
+                <span>Vraag jouw gratis demo aan</span>
+                <svg class="cta-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+
+              <a href="#contact" class="cta-btn">
+                <span>Stel eerst een vraag</span>
+                <svg class="cta-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Website Plan Section -->
+    <section class="website-plan-section">
+      <div class="website-plan-container">
+        <h2 class="website-plan-heading">Ontdek jouw ideale websitepakket</h2>
+        <p class="website-plan-subtitle">Van starter tot premium - we bouwen mee met jouw ambities</p>
+
+        <div class="pricing-grid" id="pricingGrid">
+          <!-- STARTER Package -->
+          <div class="pricing-card" style="animation-delay: 0ms;" data-package="starter">
+            <div class="plan-card-header">
+              <div class="plan-building-icon-container">
+                <svg viewBox="0 0 200 200" class="plan-building-icon" fill="none" xmlns="http://www.w3.org/2000/svg"><g class="plan-building-animate"><path d="M40 72L115 72L115 75H45V75L40 72Z" class="plan-building-roof" fill="#FF7A59"/><path d="M40 72L115 72L110 74L45 74L40 72Z" fill="#E85D3F" opacity="0.6"/><path d="M115 92L155 92L155 95H115V92Z" class="plan-building-roof" fill="#FF7A59"/><path d="M115 92L155 92L151 94L115 94V92Z" fill="#E85D3F" opacity="0.6"/><rect x="45" y="75" width="70" height="90" class="plan-building-body" fill="#5A6C7D"/><rect x="115" y="95" width="40" height="70" class="plan-building-body" fill="#4A5568"/><rect x="45" y="75" width="4" height="90" fill="#3D4B59"/><rect x="111" y="75" width="4" height="90" fill="#3D4B59"/><rect x="115" y="95" width="4" height="70" fill="#2D3748"/><rect x="151" y="95" width="4" height="70" fill="#2D3748"/><rect x="45" y="162" width="110" height="3" fill="#3D4B59"/><g class="plan-window delay-1"><rect x="56" y="88" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="56" y="88" width="18" height="2" fill="#CBD5E0"/><line x1="65" y1="88" x2="65" y2="112" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-2"><rect x="82" y="88" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="82" y="88" width="18" height="2" fill="#CBD5E0"/><line x1="91" y1="88" x2="91" y2="112" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-3"><rect x="124" y="107" width="16" height="20" fill="#FFF8E1" rx="1.5"/><rect x="124" y="107" width="16" height="1.5" fill="#CBD5E0"/><line x1="132" y1="107" x2="132" y2="127" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-4"><rect x="56" y="125" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="56" y="125" width="18" height="2" fill="#CBD5E0"/><line x1="65" y1="125" x2="65" y2="149" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-5"><rect x="124" y="137" width="16" height="20" fill="#FFF8E1" rx="1.5"/><rect x="124" y="137" width="16" height="1.5" fill="#CBD5E0"/><line x1="132" y1="137" x2="132" y2="157" stroke="#CBD5E0" stroke-width="1.5"/></g><path d="M82 165V143C82 141.5 83 141 84.5 141H95.5C97 141 98 141.5 98 143V165Z" class="plan-door" fill="#2D3748"/><circle cx="88" cy="152" r="2" fill="#FFD700" class="plan-door"/><rect x="82" y="141" width="16" height="2" fill="#1A202C" class="plan-door"/></g></svg>
+              </div>
+              <div class="plan-package-name">STARTER</div>
+            </div>
+            <div class="plan-card-body">
+              <div class="plan-section">
+                <h3 class="plan-card-title">✅ Sterk beginnen zonder omwegen</h3>
+                <p class="plan-card-description">Je bent ondernemer en je wilt gewoon goed online staan zonder gedoe. Met dit traject krijg je een rustgevend, professioneel starter-design dat meteen werkt.</p>
+              </div>
+              <div class="plan-section">
+                <p class="plan-intro-text">Wat je krijgt (globaal):</p>
+                <ul class="plan-features-list">
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">Starter-design naar jouw keuze, gericht op vertrouwen.</span>
+                  </li>
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">Technisch volledig op orde en direct vindbaar in Google.</span>
+                  </li>
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">Op maat gemaakt contactformulier dat precies doet wat jij nodig hebt.</span>
+                  </li>
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">Een duidelijke, simpele basis waar je direct mee kunt starten.</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="plan-section">
+                <p class="plan-question-text">Herken jij jezelf hierin?</p>
+              </div>
+            </div>
+            <a class="plan-cta-button" href="#contact">
+              <span>Bekijk wat er precies in dit pakket zit →</span>
+              <svg class="plan-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+
+          <!-- PRO Package -->
+          <div class="pricing-card pricing-card-highlighted" style="animation-delay: 700ms;" data-package="pro">
+            <div class="plan-card-header">
+              <div class="plan-building-icon-container">
+                <svg viewBox="0 0 200 200" class="plan-building-icon" fill="none" xmlns="http://www.w3.org/2000/svg"><g class="plan-building-animate"><path d="M25 42L115 42L115 45H30V45L25 42Z" class="plan-building-roof" fill="#FF7A59"/><path d="M25 42L115 42L110 44L30 44L25 42Z" fill="#E85D3F" opacity="0.6"/><path d="M115 60L170 60L170 65H115V60Z" class="plan-building-roof" fill="#FF7A59"/><path d="M115 60L170 60L165 62L115 62V60Z" fill="#E85D3F" opacity="0.6"/><rect x="30" y="45" width="85" height="120" class="plan-building-body" fill="#5A6C7D"/><rect x="115" y="65" width="55" height="100" class="plan-building-body" fill="#4A5568"/><rect x="30" y="45" width="5" height="120" fill="#3D4B59"/><rect x="110" y="45" width="5" height="120" fill="#3D4B59"/><rect x="115" y="65" width="5" height="100" fill="#2D3748"/><rect x="165" y="65" width="5" height="100" fill="#2D3748"/><rect x="30" y="162" width="140" height="3" fill="#3D4B59"/><g class="plan-window delay-1"><rect x="42" y="58" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="42" y="58" width="18" height="2" fill="#CBD5E0"/><line x1="51" y1="58" x2="51" y2="82" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-2"><rect x="66" y="58" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="66" y="58" width="18" height="2" fill="#CBD5E0"/><line x1="75" y1="58" x2="75" y2="82" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-3"><rect x="90" y="58" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="90" y="58" width="18" height="2" fill="#CBD5E0"/><line x1="99" y1="58" x2="99" y2="82" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-4"><rect x="42" y="92" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="42" y="92" width="18" height="2" fill="#CBD5E0"/><line x1="51" y1="92" x2="51" y2="116" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-5"><rect x="66" y="92" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="66" y="92" width="18" height="2" fill="#CBD5E0"/><line x1="75" y1="92" x2="75" y2="116" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-6"><rect x="90" y="92" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="90" y="92" width="18" height="2" fill="#CBD5E0"/><line x1="99" y1="92" x2="99" y2="116" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-7"><rect x="42" y="126" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="42" y="126" width="18" height="2" fill="#CBD5E0"/><line x1="51" y1="126" x2="51" y2="150" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-8"><rect x="90" y="126" width="18" height="24" fill="#FFF8E1" rx="2"/><rect x="90" y="126" width="18" height="2" fill="#CBD5E0"/><line x1="99" y1="126" x2="99" y2="150" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-1"><rect x="127" y="78" width="16" height="22" fill="#FFF8E1" rx="1.5"/><rect x="127" y="78" width="16" height="1.5" fill="#CBD5E0"/><line x1="135" y1="78" x2="135" y2="100" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-2"><rect x="147" y="78" width="16" height="22" fill="#FFF8E1" rx="1.5"/><rect x="147" y="78" width="16" height="1.5" fill="#CBD5E0"/><line x1="155" y1="78" x2="155" y2="100" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-3"><rect x="127" y="108" width="16" height="22" fill="#FFF8E1" rx="1.5"/><rect x="127" y="108" width="16" height="1.5" fill="#CBD5E0"/><line x1="135" y1="108" x2="135" y2="130" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-4"><rect x="147" y="108" width="16" height="22" fill="#FFF8E1" rx="1.5"/><rect x="147" y="108" width="16" height="1.5" fill="#CBD5E0"/><line x1="155" y1="108" x2="155" y2="130" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-5"><rect x="127" y="138" width="16" height="22" fill="#FFF8E1" rx="1.5"/><rect x="127" y="138" width="16" height="1.5" fill="#CBD5E0"/><line x1="135" y1="138" x2="135" y2="160" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-6"><rect x="147" y="138" width="16" height="22" fill="#FFF8E1" rx="1.5"/><rect x="147" y="138" width="16" height="1.5" fill="#CBD5E0"/><line x1="155" y1="138" x2="155" y2="160" stroke="#CBD5E0" stroke-width="1.5"/></g><path d="M66 165V143C66 141.5 67 141 68.5 141H81.5C83 141 84 141.5 84 143V165Z" fill="#2D3748" class="plan-door"/><rect x="66" y="141" width="18" height="2" fill="#1A202C" class="plan-door"/><circle cx="72" cy="152" r="1.8" fill="#FFD700" class="plan-door"/></g></svg>
+              </div>
+              <div class="plan-package-name">PRO</div>
+            </div>
+            <div class="plan-card-body">
+              <div class="plan-section">
+                <h3 class="plan-card-title">✅ Maak van je website een groeiversneller</h3>
+                <p class="plan-card-description">Je onderneming draait, maar je online uitstraling mag sterker, helderder en professioneler. Dit traject is voor ondernemers die willen opschalen zonder zelf in de techniek te duiken.</p>
+              </div>
+              <div class="plan-section">
+                <p class="plan-intro-text">Wat je krijgt (globaal):</p>
+                <ul class="plan-features-list">
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">Een uitgebreidere website die meegroeit met je bedrijf.</span>
+                  </li>
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">30 min/maand aanpastijd inbegrepen — jij stuurt, ik regel het.</span>
+                  </li>
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">Google Analytics standaard ingericht zodat je zelf inzicht hebt.</span>
+                  </li>
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">Slimme functies en uitbreidingen die je werk makkelijker maken en je uitstraling versterken.</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="plan-section">
+                <p class="plan-question-text">Herken jij jezelf hierin?</p>
+              </div>
+            </div>
+            <a class="plan-cta-button" href="#contact">
+              <span>Zie welke upgrades je krijgt →</span>
+              <svg class="plan-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+
+          <!-- PREMIUM Package -->
+          <div class="pricing-card" style="animation-delay: 350ms;" data-package="premium">
+            <div class="plan-card-header">
+              <div class="plan-building-icon-container">
+                <svg viewBox="0 0 200 200" class="plan-building-icon" fill="none" xmlns="http://www.w3.org/2000/svg"><g class="plan-building-animate"><path d="M15 22L95 22L95 25H20V25L15 22Z" class="plan-building-roof" fill="#FF7A59"/><path d="M15 22L95 22L90 24L20 24L15 22Z" fill="#E85D3F" opacity="0.6"/><path d="M95 42L145 42L145 45H95V42Z" class="plan-building-roof" fill="#FF7A59"/><path d="M95 42L145 42L140 44L95 44V42Z" fill="#E85D3F" opacity="0.6"/><path d="M145 57L180 57L180 60H145V57Z" class="plan-building-roof" fill="#FF7A59"/><path d="M145 57L180 57L175 59L145 59V57Z" fill="#E85D3F" opacity="0.6"/><rect x="20" y="25" width="75" height="140" class="plan-building-body" fill="#5A6C7D"/><rect x="95" y="45" width="50" height="120" class="plan-building-body" fill="#4A5568"/><rect x="145" y="60" width="35" height="105" class="plan-building-body" fill="#3D4B59"/><rect x="20" y="25" width="5" height="140" fill="#3D4B59"/><rect x="90" y="25" width="5" height="140" fill="#3D4B59"/><rect x="95" y="45" width="5" height="120" fill="#2D3748"/><rect x="140" y="45" width="5" height="120" fill="#2D3748"/><rect x="145" y="60" width="5" height="105" fill="#1A202C"/><rect x="175" y="60" width="5" height="105" fill="#1A202C"/><rect x="20" y="162" width="160" height="3" fill="#3D4B59"/><g class="plan-window delay-1"><rect x="30" y="38" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="37" y1="38" x2="37" y2="56" stroke="#CBD5E0" stroke-width="1.5"/><rect x="30" y="38" width="14" height="1.5" fill="#CBD5E0"/></g><g class="plan-window delay-2"><rect x="48" y="38" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="55" y1="38" x2="55" y2="56" stroke="#CBD5E0" stroke-width="1.5"/><rect x="48" y="38" width="14" height="1.5" fill="#CBD5E0"/></g><g class="plan-window delay-3"><rect x="66" y="38" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="73" y1="38" x2="73" y2="56" stroke="#CBD5E0" stroke-width="1.5"/><rect x="66" y="38" width="14" height="1.5" fill="#CBD5E0"/></g><g class="plan-window delay-4"><rect x="30" y="64" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="37" y1="64" x2="37" y2="82" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-5"><rect x="48" y="64" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="55" y1="64" x2="55" y2="82" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-6"><rect x="66" y="64" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="73" y1="64" x2="73" y2="82" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-7"><rect x="30" y="90" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="37" y1="90" x2="37" y2="108" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-8"><rect x="48" y="90" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="55" y1="90" x2="55" y2="108" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-1"><rect x="66" y="90" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="73" y1="90" x2="73" y2="108" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-2"><rect x="30" y="116" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="37" y1="116" x2="37" y2="134" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-3"><rect x="48" y="116" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="55" y1="116" x2="55" y2="134" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-4"><rect x="66" y="116" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="73" y1="116" x2="73" y2="134" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-5"><rect x="30" y="142" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="37" y1="142" x2="37" y2="160" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-6"><rect x="66" y="142" width="14" height="18" fill="#FFF8E1" rx="1.5"/><line x1="73" y1="142" x2="73" y2="160" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-1"><rect x="104" y="58" width="12" height="16" fill="#FFF8E1" rx="1.5"/><line x1="110" y1="58" x2="110" y2="74" stroke="#CBD5E0" stroke-width="1.5"/><rect x="104" y="58" width="12" height="1.5" fill="#CBD5E0"/></g><g class="plan-window delay-2"><rect x="120" y="58" width="12" height="16" fill="#FFF8E1" rx="1.5"/><line x1="126" y1="58" x2="126" y2="74" stroke="#CBD5E0" stroke-width="1.5"/><rect x="120" y="58" width="12" height="1.5" fill="#CBD5E0"/></g><g class="plan-window delay-3"><rect x="104" y="82" width="12" height="16" fill="#FFF8E1" rx="1.5"/><line x1="110" y1="82" x2="110" y2="98" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-4"><rect x="120" y="82" width="12" height="16" fill="#FFF8E1" rx="1.5"/><line x1="126" y1="82" x2="126" y2="98" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-5"><rect x="104" y="106" width="12" height="16" fill="#FFF8E1" rx="1.5"/><line x1="110" y1="106" x2="110" y2="122" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-6"><rect x="120" y="106" width="12" height="16" fill="#FFF8E1" rx="1.5"/><line x1="126" y1="106" x2="126" y2="122" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-7"><rect x="104" y="130" width="12" height="16" fill="#FFF8E1" rx="1.5"/><line x1="110" y1="130" x2="110" y2="146" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-8"><rect x="120" y="130" width="12" height="16" fill="#FFF8E1" rx="1.5"/><line x1="126" y1="130" x2="126" y2="146" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-1"><rect x="153" y="73" width="10" height="14" fill="#FFF8E1" rx="1.5"/><line x1="158" y1="73" x2="158" y2="87" stroke="#CBD5E0" stroke-width="1.5"/><rect x="153" y="73" width="10" height="1.5" fill="#CBD5E0"/></g><g class="plan-window delay-2"><rect x="166" y="73" width="10" height="14" fill="#FFF8E1" rx="1.5"/><line x1="171" y1="73" x2="171" y2="87" stroke="#CBD5E0" stroke-width="1.5"/><rect x="166" y="73" width="10" height="1.5" fill="#CBD5E0"/></g><g class="plan-window delay-3"><rect x="153" y="95" width="10" height="14" fill="#FFF8E1" rx="1.5"/><line x1="158" y1="95" x2="158" y2="109" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-4"><rect x="166" y="95" width="10" height="14" fill="#FFF8E1" rx="1.5"/><line x1="171" y1="95" x2="171" y2="109" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-5"><rect x="153" y="117" width="10" height="14" fill="#FFF8E1" rx="1.5"/><line x1="158" y1="117" x2="158" y2="131" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-6"><rect x="166" y="117" width="10" height="14" fill="#FFF8E1" rx="1.5"/><line x1="171" y1="117" x2="171" y2="131" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-7"><rect x="153" y="139" width="10" height="14" fill="#FFF8E1" rx="1.5"/><line x1="158" y1="139" x2="158" y2="153" stroke="#CBD5E0" stroke-width="1.5"/></g><g class="plan-window delay-8"><rect x="166" y="139" width="10" height="14" fill="#FFF8E1" rx="1.5"/><line x1="171" y1="139" x2="171" y2="153" stroke="#CBD5E0" stroke-width="1.5"/></g><path d="M48 165V145C48 143.5 49 143 50.5 143H61.5C63 143 64 143.5 64 145V165Z" fill="#2D3748" class="plan-door"/><rect x="48" y="143" width="16" height="2" fill="#1A202C" class="plan-door"/><circle cx="54" cy="153" r="1.8" fill="#FFD700" class="plan-door"/></g></svg>
+              </div>
+              <div class="plan-package-name">PREMIUM</div>
+            </div>
+            <div class="plan-card-body">
+              <div class="plan-section">
+                <h3 class="plan-card-title">✅ Volledige controle over design en impact</h3>
+                <p class="plan-card-description">Je wilt een site die je bedrijf neerzet als serieus, volwassen en onderscheidend. Dit traject is voor ondernemers die bewust investeren in kwaliteit en uitstraling.</p>
+              </div>
+              <div class="plan-section">
+                <p class="plan-intro-text">Wat je krijgt (globaal):</p>
+                <ul class="plan-features-list">
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">60 min/maand aanpastijd — altijd actueel zonder extra kosten.</span>
+                  </li>
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">Stripe-integratie met ondersteuning voor iDEAL-betalingen.</span>
+                  </li>
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">Geavanceerde functies en logica die je bedrijf ondersteunen en tijd besparen.</span>
+                  </li>
+                  <li class="plan-feature-item">
+                    <svg class="plan-check-icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span class="plan-feature-text">Een doordachte, hoogwaardige online uitstraling die past bij een serieus merk.</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="plan-section">
+                <p class="plan-question-text">Herken jij jezelf hierin?</p>
+              </div>
+            </div>
+            <a class="plan-cta-button" href="#contact">
+              <span>Ontdek waarom dit traject anders is →</span>
+              <svg class="plan-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="website-plan-info">
+          <h3 class="website-plan-info-title">Nog goed om te weten</h3>
+          <p class="website-plan-info-text">Alle websites worden met de hand ontworpen én gebouwd, volledig afgestemd op jouw onderneming. Je krijgt altijd een snelle, schaalbare en technisch sterke basis die je later zonder problemen kunt uitbreiden. Ook de vindbaarheid, beveiliging en structuur worden in elk pakket professioneel ingericht — dat maakt de pakketten verschillend in opties, maar gelijk in kwaliteit.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+      <div class="process-container">
+        <div class="process-left">
+          <h2 class="process-heading">Laten we het gewoon makkelijk houden</h2>
+
+          <div class="process-text">
+            <p class="process-intro">Samenwerken moet simpel en duidelijk zijn. Je begint altijd op mijn prijzenpagina. Daar kies je wat je nodig hebt of je stelt je eigen pakket samen. Je vult kort het formulier in en vertelt wie je bent en wat je zoekt. Geen gedoe, geen lange intake – gewoon helder starten.</p>
+
+            <p class="process-intro">Met die informatie ga ik voor je aan de slag en maak ik binnen twee dagen een gratis demo van jouw website. Dat is geen standaard template, maar echt een eerste opzet in jouw stijl. Zo kun je meteen zien of het goed voelt zonder ergens aan vast te zitten.</p>
+
+            <p class="process-intro">Ben je enthousiast? Mooi, dan bouwen we jouw website verder uit en neem ik je mee in het proces. Jij geeft feedback, ik stuur bij en zorg dat alles klopt: uitstraling, structuur en inhoud. Mijn webdesign voor kleine ondernemers in Limburg draait om samenwerken op basis van vertrouwen – jij blijft betrokken, en ik denk actief met je mee.</p>
+
+            <p class="process-intro">Is alles naar wens? Dan zetten we jouw website live en kun jij er trots mee naar buiten.</p>
+          </div>
+        </div>
+
+        <div class="process-right">
+          <div class="process-steps">
+            <div class="process-step" data-step="1">
+              <div class="step-number">1</div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h3 class="step-title">Kies & vertel</h3>
+                <p class="step-description">Selecteer je pakket en vul het formulier in</p>
+              </div>
+            </div>
+
+            <div class="process-step" data-step="2">
+              <div class="step-number">2</div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <div>
+                <h3 class="step-title">Demo binnen 2 dagen</h3>
+                <p class="step-description">Ontvang een eerste opzet in jouw stijl</p>
+              </div>
+            </div>
+
+            <div class="process-step" data-step="3">
+              <div class="step-number">3</div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="step-title">Samenwerken</h3>
+                <p class="step-description">Feedback geven en samen verfijnen</p>
+              </div>
+            </div>
+
+            <div class="process-step" data-step="4">
+              <div class="step-number">4</div>
+              <div class="step-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h3 class="step-title">Live!</h3>
+                <p class="step-description">Jouw website gaat de wereld in</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Nest Section -->
+    <section class="about-nest-section">
+      <div class="about-nest-container">
+        <div class="about-nest-content">
+          <div class="about-nest-text">
+            <p class="about-nest-label">NEEM EEN KIJKJE IN</p>
+            <h2 class="about-nest-heading">Mijn werk</h2>
+            <p class="about-nest-description">
+              Een website hoort geen nutteloos digitaal visitekaartje te zijn maar een plek die werkt en vertrouwen wekt. Iets dat past bij wie je bent en wat je doet. Helder, rustig en logisch opgebouwd. Geen marketingpraat of drukke chaos maar duidelijkheid en richting. Wanneer iemand jouw website opent moet het meteen goed voelen: overzicht, structuur en vertrouwen. Daarom begin ik niet bij kleuren of knoppen maar bij de kern. Wat wil je bereiken, wie wil je aantrekken en wat moet jouw website opleveren. Van daaruit bouw ik met een doordachte structuur, slimme opbouw en moderne techniek. Snel laden, gebruiksvriendelijk, veilig en klaar om gevonden te worden in Google zonder trucjes. Of het nu gaat om webdesign voor kleine ondernemers in Limburg of een website laten maken in Venlo voor iemand die professioneel online zichtbaar wil zijn, het uitgangspunt blijft hetzelfde: functioneel maatwerk zonder onnodige rommel.<br>
+              <br>
+Ik ben geen groot bureau. Ik werk bewust persoonlijk omdat dat simpelweg betere resultaten oplevert. Korte lijnen, eerlijk meedenken en websites bouwen met kwaliteit en aandacht. Ik geloof in dingen maken die kloppen – ook technisch – en die een bedrijf écht vooruithelpen. Ik ben Kay Huybreghs uit Venlo en ik bouw al meer dan vier jaar maatwerk websites die snel presteren, klaar zijn voor SEO en meegroeien met een bedrijf. Hieronder staat een deel van mijn werk.
+            </p>
+            <button class="about-nest-button">
+              Meer over ons
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <div class="about-nest-images">
+            <div class="about-nest-track">
+              <div class="about-nest-slide active">
+                <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 1" class="about-nest-image" loading="lazy">
+                <img src="https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 1" class="about-nest-image-accent" loading="lazy">
+              </div>
+              <div class="about-nest-slide">
+                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 2" class="about-nest-image" loading="lazy">
+                <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 2" class="about-nest-image-accent" loading="lazy">
+              </div>
+              <div class="about-nest-slide">
+                <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 3" class="about-nest-image" loading="lazy">
+                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 3" class="about-nest-image-accent" loading="lazy">
+              </div>
+              <div class="about-nest-slide">
+                <img src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 4" class="about-nest-image" loading="lazy">
+                <img src="https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 4" class="about-nest-image-accent" loading="lazy">
+              </div>
+              <div class="about-nest-slide">
+                <img src="https://images.pexels.com/photos/3183170/pexels-photo-3183170.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 5" class="about-nest-image" loading="lazy">
+                <img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 5" class="about-nest-image-accent" loading="lazy">
+              </div>
+            </div>
+
+            <div class="about-nest-controls">
+              <button class="about-nest-arrow about-nest-arrow-prev" aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </button>
+              <button class="about-nest-arrow about-nest-arrow-next" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+
+            <div class="about-nest-dots">
+              <button class="about-nest-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+              <button class="about-nest-dot" data-slide="1" aria-label="Go to slide 2"></button>
+              <button class="about-nest-dot" data-slide="2" aria-label="Go to slide 3"></button>
+              <button class="about-nest-dot" data-slide="3" aria-label="Go to slide 4"></button>
+              <button class="about-nest-dot" data-slide="4" aria-label="Go to slide 5"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="faq-content">
+        <div class="faq-left-section">
+          <div class="faq-header">
+            <h2>Frequently asked</h2>
+            <h2>questions</h2>
+          </div>
+
+          <div class="faq-action-cards">
+            <a href="#contact" class="faq-action-card">
+              <div class="faq-icon-wrapper faq-icon-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div class="faq-card-content">
+                <h3>Neem direct contact op</h3>
+                <p>Persoonlijk antwoord op jouw vragen of aanvraag</p>
+              </div>
+              <svg class="faq-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/>
+                <path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="#faq" class="faq-action-card">
+              <div class="faq-icon-wrapper faq-icon-green">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+              </div>
+              <div class="faq-card-content">
+                <h3>Veelgestelde vragen</h3>
+                <p>Vind snel antwoord op alles over demo's, pakketten en werkwijze.</p>
+              </div>
+              <svg class="faq-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/>
+                <path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="#blogs" class="faq-action-card">
+              <div class="faq-icon-wrapper faq-icon-yellow">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" x2="8" y1="13" y2="13"/>
+                  <line x1="16" x2="8" y1="17" y2="17"/>
+                  <line x1="10" x2="8" y1="9" y2="9"/>
+                </svg>
+              </div>
+              <div class="faq-card-content">
+                <h3>Blogs & artikelen</h3>
+                <p>Lees praktische webdesign en groeitips voor ondernemers in Limburg.</p>
+              </div>
+              <svg class="faq-arrow-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/>
+                <path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="faq-right-section">
+          <div class="faq-questions-container">
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Hoe werkt de gratis website-demo precies?</span>
+                <svg class="faq-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-content">
+                  <div class="faq-answer-text">
+                    <p>Wanneer je via de Prijzen & Mogelijkheden-pagina of via het contactformulier een aanvraag doet, maak ik binnen 1–2 dagen een volledig op maat ontworpen demo van jouw homepage.<br>
+Geen templates, geen standaard werk ik ontwerp echt een eerste versie gebaseerd op jouw stijlkeuzes en doelen.</p>
+                    <p>Je krijgt daarna een live link waar je jouw demo kunt bekijken. Pas ná jouw goedkeuring start ik met het echte project. Vind je het niets? Dan stopt het gewoon zonder kosten, zonder verplichting.<br>
+Ik vertrouw op mijn werk en wil dat jij vooraf precies ziet wat je kunt verwachten.</p>
+                    <p>Kies je een pakket? Dan kun je afhankelijk van je keuze binnen één week online zijn.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Is alles echt op maat?</span>
+                <svg class="faq-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-content">
+                  <div class="faq-answer-text">
+                    <p>Ja. Alles wordt volledig met de hand gecodeerd in HTML, CSS en JavaScript.<br>
+Geen WordPress, geen thema's, geen page-builders.</p>
+                    <span class="faq-list-intro">Daardoor is jouw website:</span>
+                    <ul>
+                      <li>supersnel (lichte code, minimale laadtijd)</li>
+                      <li>SEO-technisch sterk</li>
+                      <li>veilig en schaalbaar</li>
+                      <li>volledig aanpasbaar in jouw stijl</li>
+                    </ul>
+                    <p>Ik bouw iedere website alsof het een uniek project is — passend bij jouw bedrijf, doelgroep en regio (bijv. Venlo, Peel en Maas of de rest van Limburg).</p>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Kan ik na oplevering dingen laten aanpassen?</span>
+                <svg class="faq-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-content">
+                  <div class="faq-answer-text">
+                    <p>Ja, dat kan. Afhankelijk van het pakket krijg je maandelijks gratis aanpastijd:</p>
+                    <ul>
+                      <li>Starter: geen maandelijkse aanpastijd, maar wél tegen gereduceerd tarief (± 75% van mijn uurprijs, omdat je al klant bent).</li>
+                      <li>Pro: 30 minuten per maand inbegrepen.</li>
+                      <li>Premium: 60 minuten per maand inbegrepen.</li>
+                    </ul>
+                    <p>Binnen die tijd kan ik vrijwel alles doen: kleine updates, teksten wijzigen, foto's vervangen, structuur verbeteren, nieuwe secties plaatsen of technische verbeteringen doorvoeren.</p>
+                    <p>Je staat er dus nooit alleen voor je website blijft continu actueel, veilig en professioneel.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Hoe zit het met vindbaarheid (SEO) en snelheid?</span>
+                <svg class="faq-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-content">
+                  <div class="faq-answer-text">
+                    <p>Omdat ik alles handmatig codeer, scoort iedere site standaard:</p>
+                    <ul>
+                      <li>snel in laadtijd</li>
+                      <li>technisch optimaal voor SEO</li>
+                      <li>duidelijk gestructureerd voor Google</li>
+                    </ul>
+                    <p>De vindbaarheid hangt daarnaast ook af van de kwaliteit van je teksten.<br>
+Je kunt die zelf aanleveren, maar veel klanten kiezen ervoor om dit door mij of een andere copywriter te laten schrijven, zodat de pagina's beter scoren op lokale zoekopdrachten</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Wat heb je van mij nodig om te starten?</span>
+                <svg class="faq-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-content">
+                  <div class="faq-answer-text">
+                    <p>Hoe meer input, hoe beter ik jouw website kan afstemmen op je bedrijf.</p>
+                    <span class="faq-list-intro">Handig om aan te leveren:</span>
+                    <ul>
+                      <li>Foto's van je bedrijf of werk</li>
+                      <li>Teksten (als je ze zelf wilt schrijven)</li>
+                      <li>Jouw voorkeuren in stijl: rustig, speels, strak, kleurrijk of juist minimalistisch</li>
+                      <li>Eventuele voorbeelden die je mooi vindt</li>
+                      <li>Wensen zoals animaties, extra functies, unieke elementen</li>
+                    </ul>
+                    <p>Heb je geen teksten of foto's? Geen probleem. Ik denk actief mee en kan ook hierbij ondersteunen.<br>
+Gezamenlijk zetten we jouw bedrijf online neer zoals het hoort.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Werk je ook voor bedrijven buiten Limburg?</span>
+                <svg class="faq-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-content">
+                  <div class="faq-answer-text">
+                    <p>Ja. Ik richt me op ondernemers in Limburg, maar ik bouw net zo goed websites voor bedrijven buiten de regio. Ik kijk altijd naar jouw markt en doelgroep, zodat het ontwerp en de lokale SEO passen bij waar jouw klanten zitten. Of je bedrijf nu in Venlo, Brabant of verder zit — ik pas het gewoon aan op jouw situatie. Het proces blijft hetzelfde: jij levert jouw voorkeuren aan en ik zorg dat het eindresultaat precies aansluit op jouw bedrijf. Zo krijg je ook buiten Limburg een website die professioneel en herkenbaar overkomt.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Wat gebeurt er na oplevering?</span>
+                <svg class="faq-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-content">
+                  <div class="faq-answer-text">
+                    <p>Na oplevering blijft alles gewoon goed draaien: je website blijft online, snel en technisch verzorgd. Eventuele maandelijkse aanpassingen (bij Pro of Premium) voer ik voor je uit wanneer jij dat nodig hebt — niks verplicht, geen gedoe.<br><br>
+Google Search Console en Google Analytics worden netjes ingericht. Wil je zelf inzicht in je cijfers? Dan geef ik je toegang en leg ik uit waar je op moet letten.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                <span>Kan mijn huidige domein blijven bestaan?</span>
+                <svg class="faq-chevron-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6 9 6 6 6-6"/>
+                </svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-content">
+                  <div class="faq-answer-text">
+                    <p>Ja, natuurlijk. Als je al een domein hebt, kunnen we dat gewoon blijven gebruiken. Ik zorg voor de volledige technische koppeling, maar ik heb wél toegang nodig tot jouw domeinbeheer. Dat regel je eenvoudig zelf bij jouw huidige provider.</p>
+                    <p>Heb je nog geen domein? Dan regel ik alles voor je: de registratie, betaling, DNS-instellingen en de volledige SSL-beveiliging. Jij geeft alleen je gewenste domeinnaam door — de rest neem ik uit handen.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- CTA Section -->
+      <div class="footer-cta-section">
+        <div class="cta-banner">
+          <div class="cta-circles-container">
+            <div class="cta-circles-wrapper">
+              <div class="cta-circles">
+                <div class="cta-circle cta-circle-1"></div>
+                <div class="cta-circle cta-circle-2"></div>
+                <div class="cta-circle cta-circle-3"></div>
+                <div class="cta-circle cta-circle-4"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-floating-text-container">
+            <div class="cta-floating-text">
+              KHCUSTOMWEB. KHCUSTOMWEB. KHCUSTOMWEB. KHCUSTOMWEB. KHCUSTOMWEB.
+            </div>
+          </div>
+
+          <div class="footer-cta-content">
+            <div class="footer-cta-text">
+              <h2>Klaar om jouw website naar het volgende niveau te tillen?</h2>
+              <p>Vul het formulier in en krijg binnen 2 dagen een gratis demo van jouw perfecte website. Geen verplichtingen, gewoon kijken wat mogelijk is.</p>
+            </div>
+
+            <form class="footer-contact-form" id="footerContactForm">
+              <div class="footer-form-row">
+                <div class="footer-form-group">
+                  <label class="footer-form-label" for="footer-name">Naam *</label>
+                  <input
+                    type="text"
+                    id="footer-name"
+                    name="name"
+                    class="footer-form-input"
+                    placeholder="Jouw naam"
+                    required
+                  />
+                </div>
+                <div class="footer-form-group">
+                  <label class="footer-form-label" for="footer-email">E-mail *</label>
+                  <input
+                    type="email"
+                    id="footer-email"
+                    name="email"
+                    class="footer-form-input"
+                    placeholder="jouw@email.nl"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="footer-form-group">
+                <label class="footer-form-label" for="footer-message">Bericht *</label>
+                <textarea
+                  id="footer-message"
+                  name="message"
+                  class="footer-form-textarea"
+                  placeholder="Waar kan ik je mee helpen?"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="footer-form-submit">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+                <span>Versturen</span>
+              </button>
+
+              <div id="footer-form-message" class="footer-form-message" style="display: none;"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Main -->
+      <div class="footer-main">
+        <div class="footer-main-grid">
+          <!-- Brand Column -->
+          <div class="footer-brand">
+          <div class="footer-logo-section">
+            <div class="footer-logo-wrapper">
+              <img src="/khcustomweb_logo.webp" alt="KH Custom Web Logo" class="footer-logo">
+            </div>
+            <span class="footer-brand-name">KHCustomWeb</span>
+          </div>
+          <p class="footer-tagline">Webdesign voor kleine ondernemers in Limburg. Binnen 7 dagen online.</p>
+
+            <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:0612345678">06 123 456 78</a>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <a href="mailto:info@khcustomweb.nl">info@khcustomweb.nl</a>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Venlo, Nederland</span>
+            </div>
+          </div>
+        </div>
+
+          <!-- Quick Links Column -->
+          <div class="footer-column">
+          <h4 class="footer-column-title">Product</h4>
+          <ul class="footer-links-list">
+            <li><a href="#diensten" class="footer-link">Prijzen & Pakketten</a></li>
+            <li><a href="#portfolio" class="footer-link">Portfolio</a></li>
+            <li><a href="#branches" class="footer-link">Branches</a></li>
+            <li><a href="#contact" class="footer-link">Demo aanvragen</a></li>
+          </ul>
+        </div>
+
+          <!-- Company Column -->
+          <div class="footer-column">
+          <h4 class="footer-column-title">Company</h4>
+          <ul class="footer-links-list">
+            <li><a href="#over-ons" class="footer-link">Over Ons</a></li>
+            <li><a href="#blog" class="footer-link">Blog & SEO Tips</a></li>
+            <li><a href="#reviews" class="footer-link">Klantervaringen</a></li>
+            <li><a href="#faq" class="footer-link">Veelgestelde vragen</a></li>
+          </ul>
+        </div>
+
+          <!-- Support Column -->
+          <div class="footer-column">
+          <h4 class="footer-column-title">Support</h4>
+          <ul class="footer-links-list">
+            <li><a href="#contact" class="footer-link">Contact</a></li>
+            <li><a href="#privacy" class="footer-link">Privacyverklaring</a></li>
+            <li><a href="#terms" class="footer-link">Algemene voorwaarden</a></li>
+            <li><a href="#sitemap" class="footer-link">Sitemap</a></li>
+          </ul>
+        </div>
+        </div>
+
+        <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-info">
+          <p class="footer-copyright">&copy; 2025 KHCustomWeb. All rights reserved</p>
+          <div class="footer-details">
+            <span>KvK: 12345678</span>
+            <span>Vrijgesteld van btw (KOR)</span>
+          </div>
+        </div>
+
+        <div class="footer-social">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/kay-huybreghs-6b335b364/" target="_blank" rel="noopener noreferrer" class="footer-social-link linkedin" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </footer>
+
+  <script>
+    // Response Time Card Animation
+    let rtH = 2, rtM = 14, rtS = 30, rtRot = 0;
+
+    setTimeout(() => {
+      document.getElementById('responseTimeCard').classList.add('mounted');
+    }, 50);
+
+    setInterval(() => {
+      rtRot = (rtRot + 6) % 360;
+      document.getElementById('rtClock').style.transform = 'rotate(' + rtRot + 'deg)';
+    }, 500);
+
+    setInterval(() => {
+      if (rtS > 0) rtS--;
+      else if (rtM > 0) { rtM--; rtS = 59; }
+      else if (rtH > 0) { rtH--; rtM = 59; rtS = 59; }
+      else rtS = 0;
+
+      document.getElementById('rtHours').textContent = String(rtH).padStart(2, '0');
+      document.getElementById('rtMinutes').textContent = String(rtM).padStart(2, '0');
+      document.getElementById('rtSeconds').textContent = String(rtS).padStart(2, '0');
+    }, 1000);
+
+    // About Nest Carousel
+    const aboutTrack = document.querySelector('.about-nest-track');
+    const aboutSlides = document.querySelectorAll('.about-nest-slide');
+    const aboutDots = document.querySelectorAll('.about-nest-dot');
+    const aboutPrevBtn = document.querySelector('.about-nest-arrow-prev');
+    const aboutNextBtn = document.querySelector('.about-nest-arrow-next');
+    let currentAboutSlide = 0;
+
+    function goToAboutSlide(n) {
+      aboutDots[currentAboutSlide].classList.remove('active');
+      currentAboutSlide = (n + aboutSlides.length) % aboutSlides.length;
+      aboutDots[currentAboutSlide].classList.add('active');
+
+      const slideWidth = aboutSlides[0].offsetWidth + 16;
+      aboutTrack.style.transform = `translateX(-${currentAboutSlide * slideWidth}px)`;
+    }
+
+    function nextAboutSlide() {
+      goToAboutSlide(currentAboutSlide + 1);
+    }
+
+    function prevAboutSlide() {
+      goToAboutSlide(currentAboutSlide - 1);
+    }
+
+    aboutNextBtn.addEventListener('click', nextAboutSlide);
+    aboutPrevBtn.addEventListener('click', prevAboutSlide);
+
+    aboutDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        goToAboutSlide(index);
+      });
+    });
+
+    // Auto-play about carousel
+    setInterval(nextAboutSlide, 6000);
+
+    // Sticky Navbar Functionality
+    const stickyNavbar = document.getElementById('stickyNavbar');
+    const menuToggle = document.getElementById('menuToggle');
+    const navbarLinks = document.getElementById('navbarLinks');
+    const navLinks = document.querySelectorAll('.navbar-link');
+
+    // Add scrolled class on scroll
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 50) {
+        stickyNavbar.classList.add('scrolled');
+      } else {
+        stickyNavbar.classList.remove('scrolled');
+      }
+
+      lastScroll = currentScroll;
+    });
+
+    // Mobile menu toggle
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navbarLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navbarLinks.classList.remove('active');
+
+        // Update active state
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !navbarLinks.contains(e.target)) {
+        menuToggle.classList.remove('active');
+        navbarLinks.classList.remove('active');
+      }
+    });
+
+    // Website Works Cards Scroll Animation
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const worksCardsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+          worksCardsObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.works-card[data-animate]').forEach(card => {
+      worksCardsObserver.observe(card);
+    });
+
+    // Footer Contact Form Handler with Advanced Spam Protection
+    const footerContactForm = document.getElementById('footerContactForm');
+    const footerFormMessage = document.getElementById('footer-form-message');
+    let lastFooterSubmitTime = 0;
+    const FOOTER_RATE_LIMIT_MS = 30000;
+
+    footerContactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Rate limiting
+      const now = Date.now();
+      if (now - lastFooterSubmitTime < FOOTER_RATE_LIMIT_MS) {
+        showFooterMessage('error', 'Even geduld alsjeblieft. Je kunt maar één bericht per 30 seconden versturen.');
+        return;
+      }
+
+      const formData = new FormData(footerContactForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+
+      // Validation
+      if (!name || !email || !message) {
+        showFooterMessage('error', 'Vul alle verplichte velden in.');
+        return;
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showFooterMessage('error', 'Voer een geldig e-mailadres in.');
+        return;
+      }
+
+      // Name validation (min 2 characters, no numbers)
+      if (name.length < 2 || /\d/.test(name)) {
+        showFooterMessage('error', 'Voer een geldige naam in.');
+        return;
+      }
+
+      // Message validation (min 10 characters)
+      if (message.length < 10) {
+        showFooterMessage('error', 'Je bericht moet minimaal 10 karakters bevatten.');
+        return;
+      }
+
+      // Advanced spam filters
+      const spamPatterns = [
+        /\b(viagra|cialis|casino|lottery|prize|bitcoin|crypto)\b/i,
+        /(http|https):\/\/.*\.(tk|ml|ga|cf|gq|xyz)/i,
+        /\b\d{4}[-.\s]?\d{4}[-.\s]?\d{4}[-.\s]?\d{4}\b/,
+        /<script|<iframe|javascript:/i,
+        /(\w)\1{5,}/i, // Repeated characters
+      ];
+
+      if (spamPatterns.some(pattern => pattern.test(message) || pattern.test(name))) {
+        showFooterMessage('error', 'Je bericht bevat verdachte inhoud. Neem direct contact met ons op.');
+        return;
+      }
+
+      // Check for excessive links
+      const linkCount = (message.match(/https?:\/\//g) || []).length;
+      if (linkCount > 2) {
+        showFooterMessage('error', 'Je bericht bevat te veel links.');
+        return;
+      }
+
+      const submitButton = footerContactForm.querySelector('.footer-form-submit');
+      const originalHTML = submitButton.innerHTML;
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<svg class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" opacity="0.75"></path></svg><span>Verzenden...</span>';
+
+      try {
+        const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+        const supabaseUrl = 'https://urwtemnqugyuisutxluw.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVyd3RlbW5xdWd5dWlzdXR4bHV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAwODY0NjksImV4cCI6MjA3NTY2MjQ2OX0.bUhgW4HkHju82NMOHaYgBXGVHi-Wa_HSIfy4mQDHWIU';
+        const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+        const { error } = await supabase
+          .from('contact_submissions')
+          .insert([{
+            email: email,
+            message: `Naam: ${name}\n\n${message}`,
+            user_agent: navigator.userAgent
+          }]);
+
+        if (error) throw error;
+
+        lastFooterSubmitTime = now;
+        showFooterMessage('success', 'Bedankt voor je bericht! We nemen binnen 2 werkdagen contact met je op.');
+        footerContactForm.reset();
+      } catch (error) {
+        console.error('Footer form error:', error);
+        showFooterMessage('error', 'Er ging iets mis. Probeer het later opnieuw of neem direct contact op via telefoon of e-mail.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalHTML;
+      }
+    });
+
+    function showFooterMessage(type, text) {
+      footerFormMessage.className = `footer-form-message ${type}`;
+      footerFormMessage.textContent = text;
+      footerFormMessage.style.display = 'block';
+
+      setTimeout(() => {
+        footerFormMessage.style.display = 'none';
+      }, 6000);
+    }
+
+    // Feature cards and integrations animation with Intersection Observer
+    const featureCards = document.querySelectorAll('.feature-card');
+    const integrationsCard = document.querySelector('.card-integrations');
+
+    const featureObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 250);
+          featureObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    featureCards.forEach((card) => {
+      featureObserver.observe(card);
+    });
+
+    if (integrationsCard) {
+      const integrationsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, 600);
+            integrationsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      integrationsObserver.observe(integrationsCard);
+    }
+
+    // Visitor count animation
+    const analyticsCard = document.querySelector('.card-analytics');
+    if (analyticsCard) {
+      const analyticsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const visitorCount = document.getElementById('visitorCount');
+            let count = 0;
+            const target = 234;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+
+            setTimeout(() => {
+              const counter = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                  visitorCount.textContent = target;
+                  clearInterval(counter);
+                } else {
+                  visitorCount.textContent = Math.floor(count);
+                }
+              }, 16);
+            }, 3000);
+
+            analyticsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      analyticsObserver.observe(analyticsCard);
+    }
+
+    // Bento Grid Showcase Animation
+    const bentoGrid = document.getElementById('bentoGrid');
+    if (bentoGrid) {
+      const bentoTiles = [...bentoGrid.querySelectorAll('.bento-tile')];
+      const bentoStates = ['bento-state-1','bento-state-2','bento-state-3','bento-state-4'];
+      let bentoTourTimers = [];
+      let bentoTourActive = false;
+
+      function runBentoIntro(){
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+          bentoGrid.classList.remove('bento-intro');
+          return;
+        }
+        requestAnimationFrame(()=> bentoGrid.classList.add('bento-ready'));
+        const total = 360 + 700;
+        setTimeout(()=>{
+          bentoGrid.classList.remove('bento-intro');
+          startBentoFocusTour();
+        }, total + 80);
+      }
+
+      const BENTO_STEP_MS = 1080;
+      const BENTO_GAP_MS = 170;
+
+      function startBentoFocusTour(){
+        if (bentoTourActive) return;
+        bentoTourActive = true;
+        let t = 0;
+
+        for (let i = 0; i < bentoStates.length; i++){
+          bentoTourTimers.push(setTimeout(()=>{
+            bentoGrid.classList.remove(...bentoStates);
+            bentoGrid.classList.add(bentoStates[i]);
+            bentoTiles.forEach(el=>el.classList.remove('bento-focus'));
+            bentoTiles[i].classList.add('bento-focus');
+          }, t));
+
+          bentoTourTimers.push(setTimeout(()=>{
+            bentoGrid.classList.remove(...bentoStates);
+            bentoTiles.forEach(el=>el.classList.remove('bento-focus'));
+          }, t + BENTO_STEP_MS));
+
+          t += BENTO_STEP_MS + BENTO_GAP_MS;
+        }
+
+        bentoTourTimers.push(setTimeout(()=>{
+          bentoGrid.classList.remove(...bentoStates);
+          bentoTourActive = false;
+        }, t));
+      }
+
+      const bentoEnter = (idx)=>{
+        if (bentoTourActive || bentoGrid.classList.contains('bento-intro')) return;
+        bentoGrid.classList.remove(...bentoStates);
+        bentoGrid.classList.add(bentoStates[idx]);
+        bentoTiles.forEach(t=>t.classList.remove('bento-focus'));
+        bentoTiles[idx].classList.add('bento-focus');
+      };
+
+      const bentoLeave = ()=>{
+        if (bentoTourActive || bentoGrid.classList.contains('bento-intro')) return;
+        bentoGrid.classList.remove(...bentoStates);
+        bentoTiles.forEach(t=>t.classList.remove('bento-focus'));
+      };
+
+      bentoTiles.forEach((t,i)=>{
+        t.addEventListener('mouseenter',()=> bentoEnter(i));
+        t.addEventListener('mouseleave',()=> bentoLeave());
+        t.addEventListener('click',(e)=>{
+          if (e.target.closest('.bento-cta')) return;
+          if (bentoTourActive || bentoGrid.classList.contains('bento-intro')) return;
+          bentoEnter(i);
+        });
+      });
+
+      const bentoDemoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            runBentoIntro();
+            bentoDemoObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      bentoDemoObserver.observe(bentoGrid);
+    }
+
+    // Website Plan Pricing Cards Animation
+    const pricingGrid = document.getElementById('pricingGrid');
+    if (pricingGrid) {
+      const pricingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              document.querySelectorAll('.pricing-card').forEach(card => {
+                card.classList.add('pricing-card-animate');
+              });
+            }, 100);
+            pricingObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -150px 0px'
+      });
+
+      pricingObserver.observe(pricingGrid);
+
+    // CTA Banner Animation
+    const ctaBannerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.25,
+      rootMargin: '0px 0px -80px 0px'
+    });
+
+    const ctaBanners = document.querySelectorAll('.cta-banner');
+    ctaBanners.forEach(banner => {
+      ctaBannerObserver.observe(banner);
+    });
+    }
+  </script>
+
+  <style>
+    .spinner {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Bento Grid Showcase Styles */
+    .bento-grid-showcase {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      height: 540px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 18px;
+      transition: all 0.6s ease;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(250, 250, 250, 0.4) 100%);
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow:
+        0 2px 8px rgba(44, 62, 80, 0.04),
+        0 8px 24px rgba(44, 62, 80, 0.06),
+        0 20px 48px rgba(255, 132, 75, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(44, 62, 80, 0.08);
+      backdrop-filter: blur(20px);
+    }
+
+    .bento-grid-showcase::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255, 132, 75, 0.15) 0%, transparent 30%, rgba(255, 179, 153, 0.1) 100%);
+      z-index: -1;
+      opacity: 0.5;
+      filter: blur(12px);
+    }
+
+    .bento-tile {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(44, 62, 80, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.7s cubic-bezier(0.22,0.61,0.36,1), filter 0.4s cubic-bezier(0.22,0.61,0.36,1), box-shadow 0.4s ease;
+      cursor: pointer;
+      perspective: 800px;
+      background: white;
+    }
+
+    .bento-tile:hover {
+      box-shadow: 0 12px 32px rgba(44, 62, 80, 0.16), 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .bento-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s cubic-bezier(0.22,0.61,0.36,1), filter 0.7s cubic-bezier(0.22,0.61,0.36,1);
+      transform: translateZ(0);
+      filter: brightness(0.92) contrast(1.08) saturate(1.15);
+    }
+
+    .bento-tile:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.0) contrast(1.1) saturate(1.2);
+    }
+
+    .bento-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .bento-tile:hover::after {
+      opacity: 1;
+    }
+
+    .bento-veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(44,62,80,0) 0%, rgba(44,62,80,0.75) 100%);
+      opacity: 0;
+      transition: opacity 0.45s cubic-bezier(0.22,0.61,0.36,1);
+    }
+
+    .bento-kpi {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      color: #2C3E50;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+      border: 1px solid rgba(255, 132, 75, 0.2);
+    }
+
+    .bento-content {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.45s cubic-bezier(0.22,0.61,0.36,1), transform 0.45s cubic-bezier(0.22,0.61,0.36,1);
+    }
+
+    .bento-title {
+      margin: 0 0 4px 0;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: #ffffff;
+    }
+
+    .bento-desc {
+      margin: 0 0 10px 0;
+      font-size: 12px;
+      line-height: 1.5;
+      opacity: 0.95;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .bento-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FF844B;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-weight: 600;
+      font-size: 12px;
+      text-decoration: none;
+      box-shadow: 0 6px 16px rgba(255, 132, 75, 0.4);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .bento-cta:hover {
+      background: #FF6B2C;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(255, 132, 75, 0.5);
+    }
+
+    .bento-grid-showcase.bento-intro .bento-tile {
+      opacity: 0;
+      transform: scale(0.94);
+    }
+
+    .bento-grid-showcase.bento-intro.bento-ready .bento-tile {
+      opacity: 1;
+      transform: none;
+      transition: transform 0.60s cubic-bezier(0.22,0.61,0.36,1), opacity 0.45s ease;
+    }
+
+    .bento-grid-showcase.bento-intro.bento-ready .bento-tile:nth-child(1) {
+      transition-delay: 60ms;
+    }
+
+    .bento-grid-showcase.bento-intro.bento-ready .bento-tile:nth-child(2) {
+      transition-delay: 160ms;
+    }
+
+    .bento-grid-showcase.bento-intro.bento-ready .bento-tile:nth-child(3) {
+      transition-delay: 260ms;
+    }
+
+    .bento-grid-showcase.bento-intro.bento-ready .bento-tile:nth-child(4) {
+      transition-delay: 360ms;
+    }
+
+    .bento-grid-showcase.bento-state-1 .bento-tile:nth-child(1) {
+      transform: translate(20%, 20%) scale(1.55);
+      z-index: 3;
+    }
+
+    .bento-grid-showcase.bento-state-2 .bento-tile:nth-child(2) {
+      transform: translate(-20%, 20%) scale(1.55);
+      z-index: 3;
+    }
+
+    .bento-grid-showcase.bento-state-3 .bento-tile:nth-child(3) {
+      transform: translate(20%, -20%) scale(1.55);
+      z-index: 3;
+    }
+
+    .bento-grid-showcase.bento-state-4 .bento-tile:nth-child(4) {
+      transform: translate(-20%, -20%) scale(1.55);
+      z-index: 3;
+    }
+
+    .bento-grid-showcase.bento-state-1 .bento-tile:nth-child(1) .bento-veil,
+    .bento-grid-showcase.bento-state-2 .bento-tile:nth-child(2) .bento-veil,
+    .bento-grid-showcase.bento-state-3 .bento-tile:nth-child(3) .bento-veil,
+    .bento-grid-showcase.bento-state-4 .bento-tile:nth-child(4) .bento-veil {
+      opacity: 1;
+    }
+
+    .bento-grid-showcase.bento-state-1 .bento-tile:nth-child(1) .bento-content,
+    .bento-grid-showcase.bento-state-2 .bento-tile:nth-child(2) .bento-content,
+    .bento-grid-showcase.bento-state-3 .bento-tile:nth-child(3) .bento-content,
+    .bento-grid-showcase.bento-state-4 .bento-tile:nth-child(4) .bento-content {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 768px) {
+      .bento-grid-showcase {
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+      }
+    }
+  </style>
+
+  <script src="js/faq.js"></script>
+  <script src="js/works-story.js"></script>
+</body>
+</html>
