@@ -87,180 +87,77 @@ Voor ondernemers in Limburg die geen genoegen nemen met middelmaat.
       </div>
     </div>
 
-    <!-- Bottom Section -->
-    <div class="bottom-section">
-      <!-- Column 1 - Response Time Card -->
-      <div class="card card-response-time" id="responseTimeCard">
-        <div class="rt-overlay"></div>
-        <div class="rt-glow rt-glow-1"></div>
-        <div class="rt-glow rt-glow-2"></div>
- 
-        <div class="rt-content">
-          <div class="rt-timer-box">
-            <div class="rt-timer-overlay"></div>
-            <div class="rt-timer-glow rt-timer-glow-1"></div>
-            <div class="rt-timer-glow rt-timer-glow-2"></div>
-
-            <div class="rt-timer-header">
-              <svg class="rt-clock-icon" id="rtClock" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFB399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
+    <!-- About Nest Section -->
+    <section class="about-nest-section">
+      <div class="about-nest-container">
+        <div class="about-nest-content">
+          <div class="about-nest-text">
+            <p class="about-nest-label">NEEM EEN KIJKJE IN</p>
+            <h2 class="about-nest-heading">Mijn werk</h2>
+            <p class="about-nest-description">
+              Een website moet meteen goed voelen. Rust, overzicht en duidelijkheid geen drukte, geen loze beloftes. Bezoekers willen in één oogopslag begrijpen wie je bent, wat je doet en of ze je kunnen vertrouwen. Als dat niet klopt, zijn ze weg. Een verouderde of rommelige website zorgt juist voor twijfel, afhakers en gemiste aanvragen, nog vóórdat iemand contact opneemt. Daarom bouw ik websites vanuit structuur en logica, niet vanuit trends of trucjes. Alles draait om helderheid: snelle laadtijden, een duidelijke opbouw en een ervaring die klopt van begin tot eind.<br>
+              <br>
+Ik ben Kay Huybreghs uit Venlo en bouw sinds jaren sterke websites voor ondernemers. Ik werk rechtlijnig met duidelijke communicatie en eerlijke keuzes. Of je nu solo begint, een team runt of wilt schalen de aanpak blijft hetzelfde: een website die technisch sterk is, vertrouwen uitstraalt en je bedrijf professioneel neerzet.
+            </p>
+            <button class="about-nest-button">
+              Meer over ons
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
-              <span class="rt-timer-label">Gemiddeld binnen 2 uur reactie test het zelf</span>
+            </button>
+          </div>
+
+          <div class="about-nest-images">
+            <div class="about-nest-track">
+              <div class="about-nest-slide active">
+                <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 1" class="about-nest-image" loading="lazy">
+                <img src="https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 1" class="about-nest-image-accent" loading="lazy">
+              </div>
+              <div class="about-nest-slide">
+                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 2" class="about-nest-image" loading="lazy">
+                <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 2" class="about-nest-image-accent" loading="lazy">
+              </div>
+              <div class="about-nest-slide">
+                <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 3" class="about-nest-image" loading="lazy">
+                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 3" class="about-nest-image-accent" loading="lazy">
+              </div>
+              <div class="about-nest-slide">
+                <img src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 4" class="about-nest-image" loading="lazy">
+                <img src="https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 4" class="about-nest-image-accent" loading="lazy">
+              </div>
+              <div class="about-nest-slide">
+                <img src="https://images.pexels.com/photos/3183170/pexels-photo-3183170.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 5" class="about-nest-image" loading="lazy">
+                <img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 5" class="about-nest-image-accent" loading="lazy">
+              </div>
             </div>
 
-            <div class="rt-timer-display">
-              <div class="rt-timer-unit">
-                <div class="rt-timer-value" id="rtHours" style="transition-delay: 700ms;">02</div>
-                <div class="rt-timer-unit-label" style="transition-delay: 1100ms;">uren</div>
-              </div>
-              <div class="rt-colon" style="transition-delay: 900ms;">:</div>
-              <div class="rt-timer-unit">
-                <div class="rt-timer-value" id="rtMinutes" style="transition-delay: 900ms;">14</div>
-                <div class="rt-timer-unit-label" style="transition-delay: 1300ms;">min</div>
-              </div>
-              <div class="rt-colon" style="transition-delay: 1100ms;">:</div>
-              <div class="rt-timer-unit">
-                <div class="rt-timer-value rt-seconds" id="rtSeconds">30</div>
-                <div class="rt-timer-unit-label rt-seconds-label" style="transition-delay: 1500ms;">sec</div>
-              </div>
+            <div class="about-nest-controls">
+              <button class="about-nest-arrow about-nest-arrow-prev" aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+              </button>
+              <button class="about-nest-arrow about-nest-arrow-next" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
             </div>
-             <span class="rt-timer-label">Geen ruis. Direct antwoord. Meteen een stap vooruit.</span>
-          </div>
 
-          <div class="rt-cta-section">
-            <div class="rt-description">
-               <h3 style="text-align:center;">Word jij de volgende ondernemer<br>die vooruitgaat?</h3>
+            <div class="about-nest-dots">
+              <button class="about-nest-dot active" data-slide="0" aria-label="Go to slide 1"></button>
+              <button class="about-nest-dot" data-slide="1" aria-label="Go to slide 2"></button>
+              <button class="about-nest-dot" data-slide="2" aria-label="Go to slide 3"></button>
+              <button class="about-nest-dot" data-slide="3" aria-label="Go to slide 4"></button>
+              <button class="about-nest-dot" data-slide="4" aria-label="Go to slide 5"></button>
             </div>
-            <a href="#contact" class="rt-cta-btn">
-              <span>Start meteen</span>
-              <svg class="rt-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </a>
           </div>
         </div>
       </div>
-
-      <!-- Column 2 - Four Features Stacked -->
-      <div class="features-column">
-        <div class="feature-card">
-          <div class="feature-icon feature-icon-image">
-            <img src="/khcustomweb_logo.webp" alt="KH Custom Web">
-          </div>
-          <div class="feature-content">
-            <h3 class="feature-title">Maatwerk voor jouw branche</h3>
-            <p class="feature-description">Elke sector van bouw tot coaching en dienstverlening
-Compleet opgeleverd.</p>
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon feature-icon-image">
-            <img src="/khcustomweb_logo.webp" alt="KH Custom Web">
-          </div>
-          <div class="feature-content">
-            <h3 class="feature-title">Vindbaar op Google</h3>
-            <p class="feature-description">Je website is gebouwd om goed voor te komen in lokale zoekopdrachten. Gericht op jouw regio.</p>
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon feature-icon-image">
-            <img src="/khcustomweb_logo.webp" alt="KH Custom Web">
-          </div>
-          <div class="feature-content">
-            <h3 class="feature-title">Voor ondernemers die willen winnen</h3>
-            <p class="feature-description">Laat je concurrenten achter met een website die wél resultaat levert. </p>
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon feature-icon-image">
-            <img src="/khcustomweb_logo.webp" alt="KH Custom Web">
-          </div>
-          <div class="feature-content">
-            <h3 class="feature-title">Slimme functies geïntegreerd</h3>
-            <p class="feature-description">Offerteformulier, WhatsApp-knop of boekingssysteem.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Column 3 - Integrations -->
-      <div class="card card-integrations">
-        <h3 class="analytics-title">Werk slimmer.<br>met integraties</h3>
-        <div class="integration-circle">
-          <div class="center-logo center-logo-image">
-            <img src="/khcustomweb_logo_design.webp" alt="KH Custom Web">
-          </div>
-
-          <div class="circle-dashed"></div>
-
-          <div class="tech-logo tech-chatgpt">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/>
-            </svg>
-          </div>
-          <div class="tech-logo tech-instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-            </svg>
-          </div>
-          <div class="tech-logo tech-linkedin">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </div>
-          <div class="tech-logo tech-email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </div>
-          <div class="tech-logo tech-js">JS</div>
-          <div class="tech-logo tech-html">H5</div>
-          <div class="tech-logo tech-css">CSS</div>
-          <div class="tech-logo tech-code">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Column 4 - Analytics -->
-      <div class="card card-analytics">
-        <h3 class="analytics-title">Groeien zonder advertenties</h3>
-        <p class="analytics-description">Meer zichtbaarheid in zoekresultaten<br>door technisch sterke websites die Google begrijpt.</p>
-        <div class="analytics-visual">
-          <div class="concentric-circles">
-            <div class="circle circle-1"></div>
-            <div class="circle circle-2"></div>
-            <div class="circle circle-3"></div>
-            <div class="circle circle-4"></div>
-            <div class="circle circle-5"></div>
-            <div class="circle circle-6"></div>
-          </div>
-          <div class="analytics-chart" id="analyticsChart">
-            <div class="chart-bar" style="--bar-height: 45%;"></div>
-            <div class="chart-bar" style="--bar-height: 58%;"></div>
-            <div class="chart-bar" style="--bar-height: 52%;"></div>
-            <div class="chart-bar" style="--bar-height: 70%;"></div>
-            <div class="chart-bar" style="--bar-height: 85%;"></div>
-            <div class="chart-bar" style="--bar-height: 78%;"></div>
-            <div class="chart-bar" style="--bar-height: 88%;"></div>
-            <div class="chart-bar" style="--bar-height: 92%;"></div>
-            <div class="chart-bar" style="--bar-height: 88%;"></div>
-            <div class="chart-bar" style="--bar-height: 100%;" data-highest="true"></div>
-          </div>
-        </div>
-        <div class="visitor-count-display" id="visitorCount">0</div>
-        <div class="visitor-count-label">bezoekers/m</div>
-      </div>
-    </div>
-
+    </section>
 
     <!-- Section 3: Eerst Kijken, Dan Pas Betalen + Collage -->
     <section class="demo-collage-section">
@@ -599,78 +496,6 @@ Bij elk project start ik standaard met een concrete demo van jouw website, zodat
                 <h3 class="step-title">Oplevering zonder losse eindjes</h3>
                 <p class="step-description">De website wordt pas live gezet wanneer alles klopt en werkt zoals afgesproken. Geen half werk of open punten achteraf.</p>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Nest Section -->
-    <section class="about-nest-section">
-      <div class="about-nest-container">
-        <div class="about-nest-content">
-          <div class="about-nest-text">
-            <p class="about-nest-label">NEEM EEN KIJKJE IN</p>
-            <h2 class="about-nest-heading">Mijn werk</h2>
-            <p class="about-nest-description">
-              Een website moet meteen goed voelen. Rust, overzicht en duidelijkheid geen drukte, geen loze beloftes. Bezoekers willen in één oogopslag begrijpen wie je bent, wat je doet en of ze je kunnen vertrouwen. Als dat niet klopt, zijn ze weg. Een verouderde of rommelige website zorgt juist voor twijfel, afhakers en gemiste aanvragen, nog vóórdat iemand contact opneemt. Daarom bouw ik websites vanuit structuur en logica, niet vanuit trends of trucjes. Alles draait om helderheid: snelle laadtijden, een duidelijke opbouw en een ervaring die klopt van begin tot eind.<br>
-              <br>
-Ik ben Kay Huybreghs uit Venlo en bouw sinds jaren sterke websites voor ondernemers. Ik werk rechtlijnig met duidelijke communicatie en eerlijke keuzes. Of je nu solo begint, een team runt of wilt schalen de aanpak blijft hetzelfde: een website die technisch sterk is, vertrouwen uitstraalt en je bedrijf professioneel neerzet.
-            </p>
-            <button class="about-nest-button">
-              Meer over ons
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </button>
-          </div>
-
-          <div class="about-nest-images">
-            <div class="about-nest-track">
-              <div class="about-nest-slide active">
-                <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 1" class="about-nest-image" loading="lazy">
-                <img src="https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 1" class="about-nest-image-accent" loading="lazy">
-              </div>
-              <div class="about-nest-slide">
-                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 2" class="about-nest-image" loading="lazy">
-                <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 2" class="about-nest-image-accent" loading="lazy">
-              </div>
-              <div class="about-nest-slide">
-                <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 3" class="about-nest-image" loading="lazy">
-                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 3" class="about-nest-image-accent" loading="lazy">
-              </div>
-              <div class="about-nest-slide">
-                <img src="https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 4" class="about-nest-image" loading="lazy">
-                <img src="https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 4" class="about-nest-image-accent" loading="lazy">
-              </div>
-              <div class="about-nest-slide">
-                <img src="https://images.pexels.com/photos/3183170/pexels-photo-3183170.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Team workspace 5" class="about-nest-image" loading="lazy">
-                <img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=300" alt="Team accent 5" class="about-nest-image-accent" loading="lazy">
-              </div>
-            </div>
-
-            <div class="about-nest-controls">
-              <button class="about-nest-arrow about-nest-arrow-prev" aria-label="Previous">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="19" y1="12" x2="5" y2="12"></line>
-                  <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-              </button>
-              <button class="about-nest-arrow about-nest-arrow-next" aria-label="Next">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
-            </div>
-
-            <div class="about-nest-dots">
-              <button class="about-nest-dot active" data-slide="0" aria-label="Go to slide 1"></button>
-              <button class="about-nest-dot" data-slide="1" aria-label="Go to slide 2"></button>
-              <button class="about-nest-dot" data-slide="2" aria-label="Go to slide 3"></button>
-              <button class="about-nest-dot" data-slide="3" aria-label="Go to slide 4"></button>
-              <button class="about-nest-dot" data-slide="4" aria-label="Go to slide 5"></button>
             </div>
           </div>
         </div>
