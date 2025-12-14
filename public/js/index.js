@@ -1,3 +1,64 @@
+// Hero Email Form Handler
+const heroEmailForm = document.getElementById('emailForm');
+const heroEmailInput = document.getElementById('emailInput');
+
+if (heroEmailForm) {
+  heroEmailForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = heroEmailInput.value.trim();
+
+    if (!email) {
+      alert('Vul een e-mailadres in.');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Voer een geldig e-mailadres in.');
+      return;
+    }
+
+    const submitBtn = heroEmailForm.querySelector('.email-submit');
+    const originalHTML = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" opacity="0.75"></path></svg>';
+
+    const SUPABASE_URL = 'https://ierapvxzfvjftktskabo.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllcmFwdnh6ZnZqZnRrdHNrYWJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyMDQ2ODIsImV4cCI6MjA3ODc4MDY4Mn0.R5CahqVjXEvuLa34hfJdNozN9cogRyRXK1iKLNtnlkM';
+
+    try {
+      const response = await fetch(`${SUPABASE_URL}/functions/v1/send-contact-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        },
+        body: JSON.stringify({
+          name: 'Hero Form',
+          email: email,
+          message: 'Gratis meedenken aanvraag via hero sectie'
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Er is een fout opgetreden');
+      }
+
+      alert('Bedankt! We nemen binnen 24 uur contact met je op.');
+      heroEmailForm.reset();
+    } catch (error) {
+      console.error('Hero form error:', error);
+      alert(error.message || 'Er ging iets mis. Probeer het later opnieuw.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalHTML;
+    }
+  });
+}
+
 // Response Time Card Animation
 let rtH = 2, rtM = 14, rtS = 30, rtRot = 0;
 

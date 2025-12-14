@@ -42,16 +42,6 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const wordCount = message.trim().split(/\s+/).length;
-    if (wordCount > 5) {
-      return new Response(
-        JSON.stringify({ error: "Bericht mag maximaal 5 woorden bevatten" }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
-    }
 
     const fiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000).toISOString();
     const { data: recentSubmissions, error: rateLimitError } = await supabaseClient
@@ -81,6 +71,7 @@ Deno.serve(async (req: Request) => {
     const { error: insertError } = await supabaseClient
       .from("contact_submissions")
       .insert({
+        name: name || null,
         email,
         message,
         ip_address,
@@ -122,8 +113,8 @@ Tijdstip: ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            from: 'KHCustomWeb Contact <noreply@khcustomweb.nl>',
-            to: ['Kayhuybreghs@icloud.com'],
+            from: 'KHCustomWeb Contact <onboarding@resend.dev>',
+            to: ['kayhuybreghs@icloud.com'],
             subject: emailSubject,
             text: emailBody,
             reply_to: email
@@ -133,15 +124,15 @@ Tijdstip: ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })
         if (!emailResponse.ok) {
           const errorData = await emailResponse.text();
           console.error('Email send error:', errorData);
-          console.log('Email would have been sent to: Kayhuybreghs@icloud.com');
+          console.log('Email would have been sent to: kayhuybreghs@icloud.com');
           console.log('Email content:', emailBody);
         } else {
-          console.log('Email successfully sent to: Kayhuybreghs@icloud.com');
+          console.log('Email successfully sent to: kayhuybreghs@icloud.com');
         }
       } catch (emailError) {
         console.error('Email sending failed:', emailError);
         console.log('Falling back to console log:');
-        console.log('TO: Kayhuybreghs@icloud.com');
+        console.log('TO: kayhuybreghs@icloud.com');
         console.log('SUBJECT:', emailSubject);
         console.log('BODY:', emailBody);
       }
