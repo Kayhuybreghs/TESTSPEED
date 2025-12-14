@@ -2,9 +2,6 @@ const footerContactForm = document.getElementById('footerContactForm');
 const footerFormMessage = document.getElementById('footer-form-message');
 const footerMessageTextarea = document.getElementById('footer-message');
 
-const SUPABASE_URL = 'https://ierapvxzfvjftktskabo.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllcmFwdnh6ZnZqZnRrdHNrYWJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyMDQ2ODIsImV4cCI6MjA3ODc4MDY4Mn0.R5CahqVjXEvuLa34hfJdNozN9cogRyRXK1iKLNtnlkM';
-
 let wordCountDisplay = null;
 
 function createWordCounter() {
@@ -78,13 +75,10 @@ footerContactForm.addEventListener('submit', async (e) => {
   showFooterMessage('info', '⏳ We zijn uw aanvraag aan het behandelen. Bedankt voor uw geduld...');
 
   try {
-    console.log('Sending to:', `${SUPABASE_URL}/functions/v1/send-contact-email`);
-
-    const response = await fetch(`${SUPABASE_URL}/functions/v1/send-contact-email`, {
+    const response = await fetch('/api/send-email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
       },
       body: JSON.stringify({
         name: name,
@@ -93,10 +87,7 @@ footerContactForm.addEventListener('submit', async (e) => {
       })
     });
 
-    console.log('Response status:', response.status);
-
     const data = await response.json();
-    console.log('Response data:', data);
 
     if (!response.ok) {
       throw new Error(data.error || 'Er is een fout opgetreden');
