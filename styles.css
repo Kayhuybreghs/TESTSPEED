@@ -4004,3 +4004,266 @@ body::before {
     font-size: 15px;
   }
 }
+
+/* Spinner Animation */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Bento Grid Showcase Styles */
+.bento-grid-showcase {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  height: 540px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 18px;
+  transition: all 0.6s ease;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(250, 250, 250, 0.4) 100%);
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow:
+    0 2px 8px rgba(44, 62, 80, 0.04),
+    0 8px 24px rgba(44, 62, 80, 0.06),
+    0 20px 48px rgba(255, 132, 75, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(44, 62, 80, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+.bento-grid-showcase::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255, 132, 75, 0.15) 0%, transparent 30%, rgba(255, 179, 153, 0.1) 100%);
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(12px);
+}
+
+.bento-tile {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(44, 62, 80, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.7s cubic-bezier(0.22,0.61,0.36,1), filter 0.4s cubic-bezier(0.22,0.61,0.36,1), box-shadow 0.4s ease;
+  cursor: pointer;
+  perspective: 800px;
+  background: white;
+}
+
+.bento-tile:hover {
+  box-shadow: 0 12px 32px rgba(44, 62, 80, 0.16), 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.bento-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.22,0.61,0.36,1), filter 0.7s cubic-bezier(0.22,0.61,0.36,1);
+  transform: translateZ(0);
+  filter: brightness(0.92) contrast(1.08) saturate(1.15);
+}
+
+.bento-tile:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.0) contrast(1.1) saturate(1.2);
+}
+
+.bento-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.bento-tile:hover::after {
+  opacity: 1;
+}
+
+.bento-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(44,62,80,0) 0%, rgba(44,62,80,0.75) 100%);
+  opacity: 0;
+  transition: opacity 0.45s cubic-bezier(0.22,0.61,0.36,1);
+}
+
+.bento-kpi {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 8px 16px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  z-index: 2;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.bento-kpi-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FF7632;
+  display: block;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.bento-kpi-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2C3E50;
+  opacity: 0.7;
+}
+
+.bento-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: all 0.45s cubic-bezier(0.22,0.61,0.36,1);
+}
+
+.bento-title {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.bento-description {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.bento-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: white;
+  color: #2C3E50;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.bento-cta:hover {
+  background: #FF7632;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255, 118, 50, 0.4);
+}
+
+.bento-cta svg {
+  width: 18px;
+  height: 18px;
+}
+
+.bento-tile.bento-focus .bento-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bento-tile.bento-focus .bento-veil {
+  opacity: 1;
+}
+
+.bento-grid-showcase.bento-intro .bento-tile {
+  opacity: 0;
+  transform: scale(0.8) translateY(40px);
+  filter: blur(8px);
+}
+
+.bento-grid-showcase.bento-intro.bento-ready .bento-tile {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: all 0.7s cubic-bezier(0.22,0.61,0.36,1);
+}
+
+.bento-grid-showcase.bento-intro.bento-ready .bento-tile:nth-child(1) {
+  transition-delay: 60ms;
+}
+
+.bento-grid-showcase.bento-intro.bento-ready .bento-tile:nth-child(2) {
+  transition-delay: 160ms;
+}
+
+.bento-grid-showcase.bento-intro.bento-ready .bento-tile:nth-child(3) {
+  transition-delay: 260ms;
+}
+
+.bento-grid-showcase.bento-intro.bento-ready .bento-tile:nth-child(4) {
+  transition-delay: 360ms;
+}
+
+.bento-grid-showcase.bento-state-1 .bento-tile:nth-child(1) {
+  transform: translate(20%, 20%) scale(1.55);
+  z-index: 3;
+}
+
+.bento-grid-showcase.bento-state-2 .bento-tile:nth-child(2) {
+  transform: translate(-20%, 20%) scale(1.55);
+  z-index: 3;
+}
+
+.bento-grid-showcase.bento-state-3 .bento-tile:nth-child(3) {
+  transform: translate(20%, -20%) scale(1.55);
+  z-index: 3;
+}
+
+.bento-grid-showcase.bento-state-4 .bento-tile:nth-child(4) {
+  transform: translate(-20%, -20%) scale(1.55);
+  z-index: 3;
+}
+
+.bento-grid-showcase.bento-state-1 .bento-tile:nth-child(1) .bento-veil,
+.bento-grid-showcase.bento-state-2 .bento-tile:nth-child(2) .bento-veil,
+.bento-grid-showcase.bento-state-3 .bento-tile:nth-child(3) .bento-veil,
+.bento-grid-showcase.bento-state-4 .bento-tile:nth-child(4) .bento-veil {
+  opacity: 1;
+}
+
+.bento-grid-showcase.bento-state-1 .bento-tile:nth-child(1) .bento-content,
+.bento-grid-showcase.bento-state-2 .bento-tile:nth-child(2) .bento-content,
+.bento-grid-showcase.bento-state-3 .bento-tile:nth-child(3) .bento-content,
+.bento-grid-showcase.bento-state-4 .bento-tile:nth-child(4) .bento-content {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .bento-grid-showcase {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+  }
+}
