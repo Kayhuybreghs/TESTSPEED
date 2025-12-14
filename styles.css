@@ -2373,7 +2373,7 @@ body::before {
 .about-nest-section {
   max-width: 1600px;
   margin: 100px auto 0;
-  padding: 0 48px 60px;
+  padding: 0 0 60px 48px;
   position: relative;
 }
 
@@ -2483,9 +2483,10 @@ body::before {
 
 .about-nest-images {
   position: relative;
-  width: 100%;
+  width: calc(100% + 48px);
   height: 480px;
   overflow: hidden;
+  margin-right: -48px;
 }
 
 .about-nest-track {
@@ -2950,7 +2951,7 @@ body::before {
   }
 
   .about-nest-section {
-    padding: 60px 20px;
+    padding: 60px 20px 60px 20px;
     margin: 60px auto;
     border-radius: 16px;
   }
@@ -2960,12 +2961,14 @@ body::before {
     gap: 40px;
   }
 
-  .about-nest-heading {
-    font-size: 32px;
+  .about-nest-images {
+    width: calc(100% + 40px);
+    margin-right: -20px;
+    height: 400px;
   }
 
-  .about-nest-images {
-    height: 400px;
+  .about-nest-heading {
+    font-size: 32px;
   }
 
   .about-nest-slide {
