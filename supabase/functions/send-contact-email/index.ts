@@ -7,8 +7,6 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
-const RESEND_API_KEY = "re_VXSNTMHe_FMEYBxdpQmgwwNq7D9XgLhfs";
-
 interface ContactSubmission {
   email: string;
   message: string;
@@ -45,9 +43,9 @@ Deno.serve(async (req: Request) => {
     }
 
     const wordCount = message.trim().split(/\s+/).length;
-    if (wordCount < 5) {
+    if (wordCount > 5) {
       return new Response(
-        JSON.stringify({ error: "Bericht moet minimaal 5 woorden bevatten" }),
+        JSON.stringify({ error: "Bericht mag maximaal 5 woorden bevatten" }),
         {
           status: 400,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -102,89 +100,50 @@ Deno.serve(async (req: Request) => {
     }
 
     if (!isSpam) {
-      const emailSubject = `🚀 Nieuw bericht van ${email}`;
-      const emailHtml = `
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: linear-gradient(135deg, #FF844B 0%, #FF6B2C 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
-    .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 8px 8px; }
-    .info-row { margin: 10px 0; padding: 10px; background: white; border-radius: 4px; }
-    .label { font-weight: bold; color: #FF6B2C; }
-    .footer { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #999; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h2>📧 Nieuw Contactformulier Bericht</h2>
-    </div>
-    <div class="content">
-      <div class="info-row">
-        <span class="label">👤 Naam:</span> ${name || "Niet opgegeven"}
-      </div>
-      <div class="info-row">
-        <span class="label">📧 Email:</span> <a href="mailto:${email}">${email}</a>
-      </div>
-      <div class="info-row">
-        <span class="label">💬 Bericht:</span><br>${message}
-      </div>
-      <div class="footer">
-        <p><strong>📍 Details:</strong></p>
-        <p>IP Adres: ${ip_address}</p>
-        <p>User Agent: ${user_agent}</p>
-        <p>Tijdstip: ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })}</p>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+      const emailSubject = `Nieuw contactformulier bericht van ${email}`;
+      const emailBody = `
+Nieuw contactformulier bericht:
+
+Naam: ${name || "Niet opgegeven"}
+Email: ${email}
+Bericht: ${message}
+
+---
+IP: ${ip_address}
+User Agent: ${user_agent}
+Tijdstip: ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })}
       `;
 
       try {
-        console.log('📨 Sending email via Resend API...');
-        
         const emailResponse = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${RESEND_API_KEY}`,
+            'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY') || ''}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            from: 'KHCustomWeb Contact <onboarding@resend.dev>',
+            from: 'KHCustomWeb Contact <noreply@khcustomweb.nl>',
             to: ['Kayhuybreghs@icloud.com'],
             subject: emailSubject,
-            html: emailHtml,
+            text: emailBody,
             reply_to: email
           })
         });
 
-        const emailData = await emailResponse.json();
-
         if (!emailResponse.ok) {
-          console.error('❌ Email send failed:', emailData);
-          throw new Error(`Email failed: ${JSON.stringify(emailData)}`);
+          const errorData = await emailResponse.text();
+          console.error('Email send error:', errorData);
+          console.log('Email would have been sent to: Kayhuybreghs@icloud.com');
+          console.log('Email content:', emailBody);
+        } else {
+          console.log('Email successfully sent to: Kayhuybreghs@icloud.com');
         }
-
-        console.log('✅ Email sent successfully!');
-        console.log('Email ID:', emailData.id);
-        console.log('TO: Kayhuybreghs@icloud.com');
-        console.log('FROM:', email);
-        console.log('MESSAGE:', message);
-
       } catch (emailError) {
-        console.error('💥 Email error:', emailError);
-        
-        return new Response(
-          JSON.stringify({ error: "Formulier verzonden maar email kon niet worden verstuurd. We nemen zo snel mogelijk contact op." }),
-          {
-            status: 500,
-            headers: { ...corsHeaders, "Content-Type": "application/json" },
-          }
-        );
+        console.error('Email sending failed:', emailError);
+        console.log('Falling back to console log:');
+        console.log('TO: Kayhuybreghs@icloud.com');
+        console.log('SUBJECT:', emailSubject);
+        console.log('BODY:', emailBody);
       }
     }
 

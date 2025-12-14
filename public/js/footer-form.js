@@ -23,12 +23,10 @@ function updateWordCount() {
 
   createWordCounter();
   wordCountDisplay.textContent = `${count}/5 woorden`;
-  wordCountDisplay.style.color = count < 5 ? '#ef4444' : '#22c55e';
+  wordCountDisplay.style.color = count > 5 ? '#ef4444' : '#64748b';
 
-  if (count < 5) {
-    wordCountDisplay.textContent += ' (minimum 5 woorden)';
-  } else {
-    wordCountDisplay.textContent += ' ✓';
+  if (count > 5) {
+    wordCountDisplay.textContent += ' (maximum bereikt)';
   }
 }
 
@@ -62,8 +60,8 @@ footerContactForm.addEventListener('submit', async (e) => {
     return;
   }
 
-  if (wordCount < 5) {
-    showFooterMessage('error', 'Je bericht moet minimaal 5 woorden bevatten.');
+  if (wordCount > 5) {
+    showFooterMessage('error', 'Je bericht mag maximaal 5 woorden bevatten.');
     return;
   }
 
