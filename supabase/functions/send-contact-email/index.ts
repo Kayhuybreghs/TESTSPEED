@@ -7,6 +7,8 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
+const RESEND_API_KEY = "re_VXSNTMHe_FMEYBxdpQmgwwNq7D9XgLhfs";
+
 interface ContactSubmission {
   email: string;
   message: string;
@@ -100,33 +102,90 @@ Deno.serve(async (req: Request) => {
     }
 
     if (!isSpam) {
-      const emailSubject = `Nieuw contactformulier bericht van ${email}`;
-      const emailBody = `
-Nieuw contactformulier bericht:
-
-Naam: ${name || "Niet opgegeven"}
-Email: ${email}
-Bericht: ${message}
-
----
-IP: ${ip_address}
-User Agent: ${user_agent}
-Tijdstip: ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })}
+      const emailSubject = `🚀 Nieuw bericht van ${email}`;
+      const emailHtml = `
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: linear-gradient(135deg, #FF844B 0%, #FF6B2C 100%); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+    .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 8px 8px; }
+    .info-row { margin: 10px 0; padding: 10px; background: white; border-radius: 4px; }
+    .label { font-weight: bold; color: #FF6B2C; }
+    .footer { margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #999; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h2>📧 Nieuw Contactformulier Bericht</h2>
+    </div>
+    <div class="content">
+      <div class="info-row">
+        <span class="label">👤 Naam:</span> ${name || "Niet opgegeven"}
+      </div>
+      <div class="info-row">
+        <span class="label">📧 Email:</span> <a href="mailto:${email}">${email}</a>
+      </div>
+      <div class="info-row">
+        <span class="label">💬 Bericht:</span><br>${message}
+      </div>
+      <div class="footer">
+        <p><strong>📍 Details:</strong></p>
+        <p>IP Adres: ${ip_address}</p>
+        <p>User Agent: ${user_agent}</p>
+        <p>Tijdstip: ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })}</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
       `;
 
-      console.log('='.repeat(60));
-      console.log('NIEUW CONTACT FORMULIER BERICHT');
-      console.log('='.repeat(60));
-      console.log('TO: Kayhuybreghs@icloud.com');
-      console.log('FROM:', email);
-      console.log('NAME:', name || 'Niet opgegeven');
-      console.log('MESSAGE:', message);
-      console.log('IP:', ip_address);
-      console.log('TIME:', new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' }));
-      console.log('='.repeat(60));
-      
-      console.log('\nNOTE: Email delivery via Resend API would be configured here.');
-      console.log('The submission has been saved to the database and is ready for review.');
+      try {
+        console.log('📨 Sending email via Resend API...');
+        
+        const emailResponse = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${RESEND_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: 'KHCustomWeb Contact <onboarding@resend.dev>',
+            to: ['Kayhuybreghs@icloud.com'],
+            subject: emailSubject,
+            html: emailHtml,
+            reply_to: email
+          })
+        });
+
+        const emailData = await emailResponse.json();
+
+        if (!emailResponse.ok) {
+          console.error('❌ Email send failed:', emailData);
+          throw new Error(`Email failed: ${JSON.stringify(emailData)}`);
+        }
+
+        console.log('✅ Email sent successfully!');
+        console.log('Email ID:', emailData.id);
+        console.log('TO: Kayhuybreghs@icloud.com');
+        console.log('FROM:', email);
+        console.log('MESSAGE:', message);
+
+      } catch (emailError) {
+        console.error('💥 Email error:', emailError);
+        
+        return new Response(
+          JSON.stringify({ error: "Formulier verzonden maar email kon niet worden verstuurd. We nemen zo snel mogelijk contact op." }),
+          {
+            status: 500,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+          }
+        );
+      }
     }
 
     return new Response(

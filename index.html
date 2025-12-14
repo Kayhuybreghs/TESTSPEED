@@ -66,7 +66,7 @@ Voor zzp en mkb in Limburg die vooruit willen met een sterke website.
       </p>
 
       <!-- Email Form -->
-      <div class="email-section"> 
+      <div class="email-section">
         <p class="email-label">Gratis meedenken over jouw website?</p>
         <form class="email-form" id="emailForm">
           <div class="email-input-wrapper">
@@ -74,7 +74,7 @@ Voor zzp en mkb in Limburg die vooruit willen met een sterke website.
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            <input type="email" placeholder="John@gmail.com" class="email-input" id="emailInput" required>
+            <input type="email" placeholder="John@gmail.com" class="email-input" id="emailInput" name="email" required>
           </div>
           <button type="submit" class="email-submit">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -83,6 +83,7 @@ Voor zzp en mkb in Limburg die vooruit willen met een sterke website.
             </svg>
           </button>
         </form>
+        <div id="hero-email-message" class="hero-email-message" style="display: none;"></div>
         <p class="email-label">Vul je e-mail in en ontvang binnen 24 uur reactie.</p>
       </div>
     </div>
@@ -386,7 +387,7 @@ Bij elk project start ik standaard met een concrete demo van jouw website, zodat
       </div>
     </section>
 
-    <!-- CTA Email Signup Section -->
+    <!-- CTA Banner Section -->
     <section class="cta-banner-section">
       <div class="cta-banner-container">
         <div class="cta-banner">
@@ -408,31 +409,28 @@ Bij elk project start ik standaard met een concrete demo van jouw website, zodat
           </div>
 
           <div class="cta-content">
-            <h2 class="cta-title">Gratis meedenken over jouw website?</h2>
+            <h2 class="cta-title">Gratis demo van jouw website?</h2>
             <p class="cta-description">
-              Vul je e-mail in en ontvang binnen 24 uur reactie.
+              Zo hoef je geen beslissing te nemen op gevoel of beloftes. Je ziet rustig wat je krijgt, kunt het laten bezinken en bepaalt zelf of dit past bij jouw bedrijf.
             </p>
 
-            <form class="cta-email-form" id="ctaEmailForm">
-              <div class="cta-email-input-wrapper">
-                <input
-                  type="email"
-                  id="cta-email"
-                  name="email"
-                  class="cta-email-input"
-                  placeholder="John@gmail.com"
-                  required
-                />
-                <button type="submit" class="cta-email-submit">
-                  <span>Versturen</span>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                  </svg>
-                </button>
-              </div>
-              <div id="cta-email-message" class="cta-email-message" style="display: none;"></div>
-            </form>
+            <div class="cta-buttons">
+              <a href="#contact" class="cta-btn">
+                <span>Ontvang je gratis demo</span>
+                <svg class="cta-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+
+              <a href="#contact" class="cta-btn">
+                <span>Twijfel? Stel je vraag</span>
+                <svg class="cta-arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -1100,8 +1098,8 @@ Vertel kort wat je zoekt en waar je tegenaan loopt. Ik denk met je mee en geef e
 
   <script src="/js/navbar.js" defer></script>
   <script src="/js/index.js" defer></script>
+  <script src="/js/hero-email.js" defer></script>
   <script src="/js/footer-form.js" defer></script>
-  <script src="/js/cta-email.js" defer></script>
   <script src="/js/faq.js" defer></script>
   <script src="/js/works-story.js" defer></script>
 </body>
