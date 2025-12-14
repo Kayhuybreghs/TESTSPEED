@@ -100,6 +100,7 @@ Deno.serve(async (req: Request) => {
     }
 
     if (!isSpam) {
+      const emailSubject = `Nieuw contactformulier bericht van ${email}`;
       const emailBody = `
 Nieuw contactformulier bericht:
 
@@ -107,12 +108,43 @@ Naam: ${name || "Niet opgegeven"}
 Email: ${email}
 Bericht: ${message}
 
+---
 IP: ${ip_address}
 User Agent: ${user_agent}
+Tijdstip: ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })}
       `;
 
-      console.log("Email would be sent to: Kayhuybreghs@icloud.com");
-      console.log(emailBody);
+      try {
+        const emailResponse = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY') || ''}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: 'KHCustomWeb Contact <noreply@khcustomweb.nl>',
+            to: ['Kayhuybreghs@icloud.com'],
+            subject: emailSubject,
+            text: emailBody,
+            reply_to: email
+          })
+        });
+
+        if (!emailResponse.ok) {
+          const errorData = await emailResponse.text();
+          console.error('Email send error:', errorData);
+          console.log('Email would have been sent to: Kayhuybreghs@icloud.com');
+          console.log('Email content:', emailBody);
+        } else {
+          console.log('Email successfully sent to: Kayhuybreghs@icloud.com');
+        }
+      } catch (emailError) {
+        console.error('Email sending failed:', emailError);
+        console.log('Falling back to console log:');
+        console.log('TO: Kayhuybreghs@icloud.com');
+        console.log('SUBJECT:', emailSubject);
+        console.log('BODY:', emailBody);
+      }
     }
 
     return new Response(

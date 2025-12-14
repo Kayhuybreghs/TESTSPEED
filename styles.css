@@ -3924,7 +3924,7 @@ body::before {
 }
 
 .cta-btn {
-  background: linear-gradient(135deg, #FF844B 0%, #FF6B2C 100%);
+  background: #000000;
   color: white;
   font-weight: 600;
   padding: 1rem 2rem;
@@ -3936,7 +3936,7 @@ body::before {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  box-shadow: 0 6px 16px rgba(255, 132, 75, 0.3);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   text-decoration: none;
   position: relative;
@@ -3967,8 +3967,8 @@ body::before {
 }
 
 .cta-btn:hover {
-  background: linear-gradient(135deg, #FF6B2C 0%, #FF5722 100%);
-  box-shadow: 0 8px 20px rgba(255, 132, 75, 0.4);
+  background: #1f2937;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
 
