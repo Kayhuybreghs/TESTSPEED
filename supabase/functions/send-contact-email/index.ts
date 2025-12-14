@@ -43,9 +43,9 @@ Deno.serve(async (req: Request) => {
     }
 
     const wordCount = message.trim().split(/\s+/).length;
-    if (wordCount > 5) {
+    if (wordCount < 5) {
       return new Response(
-        JSON.stringify({ error: "Bericht mag maximaal 5 woorden bevatten" }),
+        JSON.stringify({ error: "Bericht moet minimaal 5 woorden bevatten" }),
         {
           status: 400,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -114,37 +114,19 @@ User Agent: ${user_agent}
 Tijdstip: ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })}
       `;
 
-      try {
-        const emailResponse = await fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY') || ''}`,
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            from: 'KHCustomWeb Contact <noreply@khcustomweb.nl>',
-            to: ['Kayhuybreghs@icloud.com'],
-            subject: emailSubject,
-            text: emailBody,
-            reply_to: email
-          })
-        });
-
-        if (!emailResponse.ok) {
-          const errorData = await emailResponse.text();
-          console.error('Email send error:', errorData);
-          console.log('Email would have been sent to: Kayhuybreghs@icloud.com');
-          console.log('Email content:', emailBody);
-        } else {
-          console.log('Email successfully sent to: Kayhuybreghs@icloud.com');
-        }
-      } catch (emailError) {
-        console.error('Email sending failed:', emailError);
-        console.log('Falling back to console log:');
-        console.log('TO: Kayhuybreghs@icloud.com');
-        console.log('SUBJECT:', emailSubject);
-        console.log('BODY:', emailBody);
-      }
+      console.log('='.repeat(60));
+      console.log('NIEUW CONTACT FORMULIER BERICHT');
+      console.log('='.repeat(60));
+      console.log('TO: Kayhuybreghs@icloud.com');
+      console.log('FROM:', email);
+      console.log('NAME:', name || 'Niet opgegeven');
+      console.log('MESSAGE:', message);
+      console.log('IP:', ip_address);
+      console.log('TIME:', new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' }));
+      console.log('='.repeat(60));
+      
+      console.log('\nNOTE: Email delivery via Resend API would be configured here.');
+      console.log('The submission has been saved to the database and is ready for review.');
     }
 
     return new Response(
