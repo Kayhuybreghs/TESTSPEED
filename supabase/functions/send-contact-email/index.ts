@@ -109,7 +109,7 @@ Tijdstip: ${new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Amsterdam' })
         const emailResponse = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY') || ''}`,
+            'Authorization': 'Bearer re_F7jzCuvs_HbbdFR92XvF28mFZr47BhquP',
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
