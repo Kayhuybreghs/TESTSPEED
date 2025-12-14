@@ -2227,11 +2227,11 @@ body::before {
 }
 
 .process-heading {
-  font-size: 32px;
+  font-size: 42px;
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: #1a1a1a;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #2C3E50;
   text-align: left;
   margin: 0;
 }
@@ -2399,16 +2399,16 @@ body::before {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #00D9A3;
+  color: #FF7632;
   margin: 0;
 }
 
 .about-nest-heading {
-  font-size: 52px;
+  font-size: 42px;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.15;
+  color: #2C3E50;
   letter-spacing: -0.02em;
-  color: #1a1a1a;
   margin: 0;
 }
 
@@ -2430,22 +2430,23 @@ body::before {
   align-items: center;
   gap: 8px;
   padding: 14px 28px;
-  border: 2px solid #00D9A3;
-  border-radius: 50px;
-  background: transparent;
-  color: #00D9A3;
+  background: linear-gradient(135deg, #FF7632 0%, #FF8C52 100%);
+  color: white;
   font-size: 15px;
   font-weight: 600;
+  border: none;
+  border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(255, 118, 50, 0.25);
   align-self: flex-start;
   margin-top: 12px;
 }
 
 .about-nest-button:hover {
-  background: #00D9A3;
-  color: white;
-  transform: translateX(4px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255, 118, 50, 0.4);
+  background: linear-gradient(135deg, #FF8C52 0%, #FFA070 100%);
 }
 
 .about-nest-button svg {
@@ -2566,7 +2567,7 @@ body::before {
 }
 
 .about-nest-dot.active {
-  background: #00D9A3;
+  background: #FF7632;
   width: 10px;
   height: 10px;
 }
@@ -2903,7 +2904,7 @@ body::before {
   }
 
   .process-heading {
-    font-size: 28px;
+    font-size: 32px;
     text-align: center;
   }
 
@@ -2934,7 +2935,7 @@ body::before {
   }
 
   .about-nest-heading {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .about-nest-images {
@@ -3335,7 +3336,7 @@ body::before {
 }
 
 .website-plan-heading {
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 700;
   line-height: 1.15;
   color: #2C3E50;
@@ -3973,7 +3974,7 @@ body::before {
   }
 
   .website-plan-heading {
-    font-size: 36px;
+    font-size: 32px;
   }
 }
 
@@ -3983,7 +3984,7 @@ body::before {
   }
 
   .website-plan-heading {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .website-plan-subtitle {
