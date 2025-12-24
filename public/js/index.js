@@ -329,3 +329,406 @@ ctaBanners.forEach(banner => {
   ctaBannerObserver.observe(banner);
 });
 }
+// Sticky Navbar Functionality
+const stickyNavbar = document.getElementById('stickyNavbar');
+const menuToggle = document.getElementById('menuToggle');
+const navbarLinks = document.getElementById('navbarLinks');
+const navLinks = document.querySelectorAll('.navbar-link');
+
+// Add scrolled class on scroll
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > 50) {
+    stickyNavbar.classList.add('scrolled');
+  } else {
+    stickyNavbar.classList.remove('scrolled');
+  }
+
+  lastScroll = currentScroll;
+});
+
+// Mobile menu toggle
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  navbarLinks.classList.toggle('active');
+});
+
+// Close mobile menu when clicking a link
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    navbarLinks.classList.remove('active');
+
+    // Update active state
+    navLinks.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!menuToggle.contains(e.target) && !navbarLinks.contains(e.target)) {
+    menuToggle.classList.remove('active');
+    navbarLinks.classList.remove('active');
+  }
+});
+const footerContactForm = document.getElementById('footerContactForm');
+const footerFormMessage = document.getElementById('footer-form-message');
+const footerMessageTextarea = document.getElementById('footer-message');
+
+let wordCountDisplay = null;
+
+function createWordCounter() {
+  if (!wordCountDisplay) {
+    wordCountDisplay = document.createElement('div');
+    wordCountDisplay.className = 'word-counter';
+    wordCountDisplay.style.cssText = 'margin-top: 8px; font-size: 12px; color: #64748b;';
+    footerMessageTextarea.parentElement.appendChild(wordCountDisplay);
+  }
+}
+
+function updateWordCount() {
+  const text = footerMessageTextarea.value.trim();
+  const words = text.length > 0 ? text.split(/\s+/).filter(w => w.length > 0) : [];
+  const count = words.length;
+
+  createWordCounter();
+  wordCountDisplay.textContent = `${count}/5 woorden (minimaal)`;
+  wordCountDisplay.style.color = count < 5 ? '#ef4444' : '#22c55e';
+
+  if (count < 5) {
+    wordCountDisplay.textContent = `${count}/5 woorden (nog ${5 - count} nodig)`;
+  }
+}
+
+footerMessageTextarea.addEventListener('input', updateWordCount);
+updateWordCount();
+
+footerContactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(footerContactForm);
+  const name = formData.get('name');
+  const email = formData.get('email');
+  const message = formData.get('message');
+
+  if (!name || !email || !message) {
+    showFooterMessage('error', 'Vul alle verplichte velden in.');
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showFooterMessage('error', 'Voer een geldig e-mailadres in.');
+    return;
+  }
+
+  const words = message.trim().split(/\s+/).filter(w => w.length > 0);
+  const wordCount = words.length;
+
+  if (wordCount === 0) {
+    showFooterMessage('error', 'Vul een bericht in.');
+    return;
+  }
+
+  if (wordCount < 5) {
+    showFooterMessage('error', 'Je bericht moet minimaal 5 woorden bevatten.');
+    return;
+  }
+
+  if (name.length < 2) {
+    showFooterMessage('error', 'Voer een geldige naam in.');
+    return;
+  }
+
+  const submitButton = footerContactForm.querySelector('.footer-form-submit');
+  const originalHTML = submitButton.innerHTML;
+  submitButton.disabled = true;
+  submitButton.innerHTML = '<svg class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" opacity="0.75"></path></svg><span>Bezig met verzenden...</span>';
+
+  showFooterMessage('info', '⏳ We zijn uw aanvraag aan het behandelen. Bedankt voor uw geduld...');
+
+  try {
+    const response = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message
+      })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || 'Er is een fout opgetreden');
+    }
+
+    showFooterMessage('success', '✅ Bedankt voor uw bericht! Uw aanvraag is succesvol ontvangen en wordt behandeld. We nemen binnen 24 uur contact met u op.');
+    footerContactForm.reset();
+    updateWordCount();
+  } catch (error) {
+    console.error('Footer form error:', error);
+    showFooterMessage('error', '❌ ' + (error.message || 'Er ging iets mis. Probeer het later opnieuw of neem telefonisch contact met ons op.'));
+  } finally {
+    submitButton.disabled = false;
+    submitButton.innerHTML = originalHTML;
+  }
+});
+
+function showFooterMessage(type, text) {
+  footerFormMessage.className = `footer-form-message ${type}`;
+  footerFormMessage.textContent = text;
+  footerFormMessage.style.display = 'block';
+
+  if (type === 'success') {
+    setTimeout(() => {
+      footerFormMessage.style.display = 'none';
+    }, 10000);
+  } else if (type === 'error') {
+    setTimeout(() => {
+      footerFormMessage.style.display = 'none';
+    }, 8000);
+  }
+}
+let expandedQuestionIndex = null;
+
+function toggleQuestion(index) {
+  const allButtons = document.querySelectorAll('.faq-question');
+  const allAnswers = document.querySelectorAll('.faq-answer');
+
+  if (expandedQuestionIndex === index) {
+    allButtons[index].classList.remove('active');
+    allAnswers[index].classList.remove('active');
+    expandedQuestionIndex = null;
+  } else {
+    if (expandedQuestionIndex !== null) {
+      allButtons[expandedQuestionIndex].classList.remove('active');
+      allAnswers[expandedQuestionIndex].classList.remove('active');
+    }
+
+    allButtons[index].classList.add('active');
+    allAnswers[index].classList.add('active');
+    expandedQuestionIndex = index;
+  }
+}
+
+function animateFAQItems() {
+  const leftSection = document.querySelector('.faq-left-section');
+  const faqItems = document.querySelectorAll('.faq-item');
+
+  if (!leftSection || faqItems.length === 0) return;
+
+  const leftSectionAnimation = leftSection.getAnimations()[0];
+
+  if (leftSectionAnimation) {
+    leftSectionAnimation.finished.then(() => {
+      faqItems.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('fade-in');
+        }, index * 150);
+      });
+    });
+  } else {
+    faqItems.forEach((item, index) => {
+      setTimeout(() => {
+        item.classList.add('fade-in');
+      }, 800 + index * 150);
+    });
+  }
+}
+
+function initFAQ() {
+  const allButtons = document.querySelectorAll('.faq-question');
+
+  allButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      toggleQuestion(index);
+    });
+  });
+
+  animateFAQItems();
+}
+
+function loadFAQSection() {
+  const faqSection = document.querySelector('.faq-section');
+  if (!faqSection) return;
+
+  const faqObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        initFAQ();
+        faqObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '100px 0px 0px 0px'
+  });
+
+  faqObserver.observe(faqSection);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadFAQSection);
+} else {
+  loadFAQSection();
+}
+// Professional Works Story Section - Dynamic Loading
+
+class WorksStoryAnimator {
+  constructor() {
+    this.hasAnimated = false;
+    this.observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    this.init();
+  }
+
+  init() {
+    this.observeSection();
+    this.observeElements();
+    this.observeCounters();
+    this.addSequentialAnimations();
+  }
+
+  // Observe main section for initial trigger
+  observeSection() {
+    const section = document.querySelector('.how-it-works-section');
+    if (!section) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.hasAnimated) {
+          this.hasAnimated = true;
+          entry.target.classList.add('section-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    observer.observe(section);
+  }
+
+  // Observe individual elements for staggered animations
+  observeElements() {
+    const elements = document.querySelectorAll('.step-card, .visual-wrapper, .kpi-card');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('element-visible');
+          }, 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, this.observerOptions);
+
+    elements.forEach(el => observer.observe(el));
+  }
+
+  // Smooth counter animation with easing
+  animateCounter(element, target) {
+    const duration = 1800;
+    const frameRate = 1000 / 60;
+    const totalFrames = Math.round(duration / frameRate);
+    let frame = 0;
+
+    const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+
+    const updateCounter = () => {
+      frame++;
+      const progress = easeOutQuart(frame / totalFrames);
+      const current = Math.round(progress * target);
+
+      element.textContent = current;
+
+      if (frame < totalFrames) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        element.textContent = target;
+      }
+    };
+
+    updateCounter();
+  }
+
+  // Observe and animate counters
+  observeCounters() {
+    const counters = document.querySelectorAll('.counter');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = parseInt(counter.dataset.target);
+          counter.textContent = '0';
+
+          setTimeout(() => {
+            this.animateCounter(counter, target);
+          }, 400);
+
+          observer.unobserve(counter);
+        }
+      });
+    }, { threshold: 0.6 });
+
+    counters.forEach(counter => observer.observe(counter));
+  }
+
+  // Add sequential animations for steps
+  addSequentialAnimations() {
+    const steps = document.querySelectorAll('.step-card');
+    steps.forEach((step, index) => {
+      step.style.setProperty('--animation-delay', `${index * 0.15}s`);
+    });
+
+    const kpis = document.querySelectorAll('.kpi-card');
+    kpis.forEach((kpi, index) => {
+      kpi.style.setProperty('--animation-delay', `${index * 0.1}s`);
+    });
+  }
+
+  // Add parallax effect on scroll (subtle)
+  addParallaxEffect() {
+    const laptop = document.querySelector('.laptop-mockup');
+    if (!laptop) return;
+
+    let ticking = false;
+
+    const updateParallax = () => {
+      const scrolled = window.pageYOffset;
+      const rect = laptop.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const offset = (scrolled - rect.top) * 0.05;
+        laptop.style.transform = `translateY(${offset}px)`;
+      }
+
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    });
+  }
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    new WorksStoryAnimator();
+  });
+} else {
+  new WorksStoryAnimator();
+}
