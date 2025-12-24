@@ -1230,8 +1230,8 @@ body::before {
 }
 
 .feature-icon {
-  width: 28px;
-  height: 28px;
+  width: 48px;
+  height: 48px;
   background-color: rgba(255, 243, 235, 0.8);
   border-radius: 8px;
   display: flex;
@@ -1252,8 +1252,8 @@ body::before {
 .feature-icon-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  padding: 3px;
+  object-fit: contain;
+  padding: 4px;
 }
 
 .feature-content {
@@ -1302,9 +1302,9 @@ body::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 54px;
-  height: 54px;
-  background: linear-gradient(135deg, #FF844B, #FF6B2C);
+  width: 72px;
+  height: 72px;
+  background: white;
   border-radius: 14px;
   display: flex;
   align-items: center;
@@ -1329,15 +1329,15 @@ body::before {
 
 .center-logo svg {
   color: black;
-  width: 24px;
-  height: 24px;
+  width: 48px;
+  height: 48px;
 }
 
 .center-logo-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  padding: 4px;
+  object-fit: contain;
+  padding: 6px;
 }
 
 .circle-dashed {
@@ -4510,8 +4510,8 @@ body::before {
 }
 
 .navbar-logo-wrapper {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4523,8 +4523,8 @@ body::before {
 }
 
 .sticky-navbar.scrolled .navbar-logo-wrapper {
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
 }
 
 .navbar-logo-wrapper:hover {
@@ -4535,7 +4535,8 @@ body::before {
 .navbar-logo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 4px;
 }
 
 .navbar-brand-text {
@@ -5117,7 +5118,8 @@ body::before {
 .footer-logo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 4px;
 }
 
 .footer-brand-name {
