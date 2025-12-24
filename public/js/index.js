@@ -1,34 +1,50 @@
-// Hero Email Form Handler
-const heroEmailForm = document.getElementById('emailForm');
-const heroEmailInput = document.getElementById('emailInput');
+## ===============================
+## SUPABASE CONFIG
+## ===============================
+const SUPABASE_URL = 'https://ierapvxzfvjftktskabo.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllcmFwdnh6ZnZqZnRrdHNrYWJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyMDQ2ODIsImV4cCI6MjA3ODc4MDY4Mn0.R5CahqVjXEvuLa34hfJdNozN9cogRyRXK1iKLNtnlkM';
 
-if (heroEmailForm) {
-  heroEmailForm.addEventListener('submit', async (e) => {
+## ===============================
+## UTILITY FUNCTIONS
+## ===============================
+const $ = (id) => document.getElementById(id);
+const $$ = (sel) => document.querySelectorAll(sel);
+
+function showSpinner(btn) {
+  const html = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M12 2a10 10 0 0 1 10 10" opacity=".75"/></svg>';
+  return html;
+}
+
+function restoreButton(btn, html) {
+  btn.disabled = false;
+  btn.innerHTML = html;
+}
+
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+## ===============================
+## HERO EMAIL FORM
+## ===============================
+const heroForm = $('emailForm');
+if (heroForm) {
+  heroForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    const email = $('emailInput').value.trim();
 
-    const email = heroEmailInput.value.trim();
-
-    if (!email) {
-      alert('Vul een e-mailadres in.');
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!email || !validateEmail(email)) {
       alert('Voer een geldig e-mailadres in.');
       return;
     }
 
-    const submitBtn = heroEmailForm.querySelector('.email-submit');
-    const originalHTML = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" opacity="0.75"></path></svg>';
-
-    const SUPABASE_URL = 'https://ierapvxzfvjftktskabo.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImllcmFwdnh6ZnZqZnRrdHNrYWJvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMyMDQ2ODIsImV4cCI6MjA3ODc4MDY4Mn0.R5CahqVjXEvuLa34hfJdNozN9cogRyRXK1iKLNtnlkM';
+    const btn = heroForm.querySelector('.email-submit');
+    const originalHTML = showSpinner(btn);
 
     try {
-      const response = await fetch(`${SUPABASE_URL}/functions/v1/send-contact-email`, {
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/send-contact-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -41,694 +57,380 @@ if (heroEmailForm) {
         })
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Er is een fout opgetreden');
-      }
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Er is een fout opgetreden');
 
       alert('Bedankt! We nemen binnen 24 uur contact met je op.');
-      heroEmailForm.reset();
+      heroForm.reset();
     } catch (error) {
       console.error('Hero form error:', error);
       alert(error.message || 'Er ging iets mis. Probeer het later opnieuw.');
     } finally {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalHTML;
+      restoreButton(btn, originalHTML);
     }
   });
 }
 
-// Response Time Card Animation
+## ===============================
+## RESPONSE TIME TIMER
+## ===============================
 let rtH = 2, rtM = 14, rtS = 30, rtRot = 0;
+const rtCard = $('responseTimeCard');
+const rtClock = $('rtClock');
 
-setTimeout(() => {
-  document.getElementById('responseTimeCard').classList.add('mounted');
-}, 50);
+if (rtCard && rtClock) {
+  setTimeout(() => rtCard.classList.add('mounted'), 50);
 
-setInterval(() => {
-  rtRot = (rtRot + 6) % 360;
-  document.getElementById('rtClock').style.transform = 'rotate(' + rtRot + 'deg)';
-}, 500);
+  setInterval(() => {
+    rtRot = (rtRot + 6) % 360;
+    rtClock.style.transform = `rotate(${rtRot}deg)`;
+  }, 500);
 
-setInterval(() => {
-  if (rtS > 0) rtS--;
-  else if (rtM > 0) { rtM--; rtS = 59; }
-  else if (rtH > 0) { rtH--; rtM = 59; rtS = 59; }
-  else rtS = 0;
+  setInterval(() => {
+    if (rtS > 0) rtS--;
+    else if (rtM > 0) { rtM--; rtS = 59; }
+    else if (rtH > 0) { rtH--; rtM = 59; rtS = 59; }
 
-  document.getElementById('rtHours').textContent = String(rtH).padStart(2, '0');
-  document.getElementById('rtMinutes').textContent = String(rtM).padStart(2, '0');
-  document.getElementById('rtSeconds').textContent = String(rtS).padStart(2, '0');
-}, 1000);
+    $('rtHours').textContent = String(rtH).padStart(2, '0');
+    $('rtMinutes').textContent = String(rtM).padStart(2, '0');
+    $('rtSeconds').textContent = String(rtS).padStart(2, '0');
+  }, 1000);
+}
 
-// About Nest Carousel
+## ===============================
+## ABOUT CAROUSEL
+## ===============================
 const aboutTrack = document.querySelector('.about-nest-track');
-const aboutSlides = document.querySelectorAll('.about-nest-slide');
-const aboutDots = document.querySelectorAll('.about-nest-dot');
-const aboutPrevBtn = document.querySelector('.about-nest-arrow-prev');
-const aboutNextBtn = document.querySelector('.about-nest-arrow-next');
-let currentAboutSlide = 0;
+if (aboutTrack) {
+  const slides = $$('.about-nest-slide');
+  const dots = $$('.about-nest-dot');
+  let current = 0;
 
-function goToAboutSlide(n) {
-  aboutDots[currentAboutSlide].classList.remove('active');
-  currentAboutSlide = (n + aboutSlides.length) % aboutSlides.length;
-  aboutDots[currentAboutSlide].classList.add('active');
+  function goTo(n) {
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    dots[current].classList.add('active');
+    aboutTrack.style.transform = `translateX(-${current * (slides[0].offsetWidth + 16)}px)`;
+  }
 
-  const slideWidth = aboutSlides[0].offsetWidth + 16;
-  aboutTrack.style.transform = `translateX(-${currentAboutSlide * slideWidth}px)`;
+  document.querySelector('.about-nest-arrow-next')?.addEventListener('click', () => goTo(current + 1));
+  document.querySelector('.about-nest-arrow-prev')?.addEventListener('click', () => goTo(current - 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  setInterval(() => goTo(current + 1), 6000);
 }
 
-function nextAboutSlide() {
-  goToAboutSlide(currentAboutSlide + 1);
+## ===============================
+## INTERSECTION OBSERVER ANIMATIONS
+## ===============================
+function observe(selector, callback, options = {}) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        callback(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3, ...options });
+
+  $$(selector).forEach(el => observer.observe(el));
 }
 
-function prevAboutSlide() {
-  goToAboutSlide(currentAboutSlide - 1);
-}
-
-aboutNextBtn.addEventListener('click', nextAboutSlide);
-aboutPrevBtn.addEventListener('click', prevAboutSlide);
-
-aboutDots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
-    goToAboutSlide(index);
-  });
-});
-
-// Auto-play about carousel
-setInterval(nextAboutSlide, 6000);
-
-// Website Works Cards Scroll Animation
-const observerOptions = {
-  threshold: 0.3,
-  rootMargin: '0px 0px -100px 0px'
-};
-
-const worksCardsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('animate');
-      worksCardsObserver.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.works-card[data-animate]').forEach(card => {
-  worksCardsObserver.observe(card);
-});
-
-// Feature cards and integrations animation with Intersection Observer
-const featureCards = document.querySelectorAll('.feature-card');
-const integrationsCard = document.querySelector('.card-integrations');
-
-const featureObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, index) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, index * 250);
-      featureObserver.unobserve(entry.target);
-    }
-  });
+## Feature Cards
+observe('.feature-card', (el) => {
+  const cards = $$('.feature-card');
+  const index = Array.from(cards).indexOf(el);
+  setTimeout(() => el.classList.add('visible'), index * 250);
 }, { threshold: 0.2 });
 
-featureCards.forEach((card) => {
-  featureObserver.observe(card);
-});
+## Integrations Card
+const intCard = document.querySelector('.card-integrations');
+if (intCard) observe('.card-integrations', (el) => setTimeout(() => el.classList.add('visible'), 600), { threshold: 0.2 });
 
-if (integrationsCard) {
-  const integrationsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, 600);
-        integrationsObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  integrationsObserver.observe(integrationsCard);
-}
-
-// Visitor count animation
+## Visitor Counter
 const analyticsCard = document.querySelector('.card-analytics');
 if (analyticsCard) {
-  const analyticsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const visitorCount = document.getElementById('visitorCount');
-        let count = 0;
-        const target = 234;
-        const duration = 2000;
-        const increment = target / (duration / 16);
+  observe('.card-analytics', () => {
+    const counter = $('visitorCount');
+    let count = 0;
+    const target = 234;
 
-        setTimeout(() => {
-          const counter = setInterval(() => {
-            count += increment;
-            if (count >= target) {
-              visitorCount.textContent = target;
-              clearInterval(counter);
-            } else {
-              visitorCount.textContent = Math.floor(count);
-            }
-          }, 16);
-        }, 3000);
-
-        analyticsObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  analyticsObserver.observe(analyticsCard);
+    setTimeout(() => {
+      const timer = setInterval(() => {
+        count += target / 125;
+        if (count >= target) {
+          counter.textContent = target;
+          clearInterval(timer);
+        } else {
+          counter.textContent = Math.floor(count);
+        }
+      }, 16);
+    }, 3000);
+  });
 }
 
-// Bento Grid Showcase Animation
-const bentoGrid = document.getElementById('bentoGrid');
-if (bentoGrid) {
-  const bentoTiles = [...bentoGrid.querySelectorAll('.bento-tile')];
-  const bentoStates = ['bento-state-1','bento-state-2','bento-state-3','bento-state-4'];
-  let bentoTourTimers = [];
-  let bentoTourActive = false;
+## Works Cards Animation
+observe('.works-card[data-animate]', (el) => el.classList.add('animate'));
 
-  function runBentoIntro(){
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches){
+## Pricing Cards
+const pricingGrid = $('pricingGrid');
+if (pricingGrid) {
+  observe('#pricingGrid', () => {
+    setTimeout(() => $$('.pricing-card').forEach(c => c.classList.add('pricing-card-animate')), 100);
+  }, { rootMargin: '0px 0px -150px 0px' });
+}
+
+## CTA Banners
+observe('.cta-banner', (el) => el.classList.add('visible'), { threshold: 0.25, rootMargin: '0px 0px -80px 0px' });
+
+## ===============================
+## BENTO GRID SHOWCASE
+## ===============================
+const bentoGrid = $('bentoGrid');
+if (bentoGrid) {
+  const tiles = [...bentoGrid.querySelectorAll('.bento-tile')];
+  const states = ['bento-state-1', 'bento-state-2', 'bento-state-3', 'bento-state-4'];
+  let timers = [], tourActive = false;
+
+  function runIntro() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       bentoGrid.classList.remove('bento-intro');
       return;
     }
-    requestAnimationFrame(()=> bentoGrid.classList.add('bento-ready'));
-    const total = 360 + 700;
-    setTimeout(()=>{
+    requestAnimationFrame(() => bentoGrid.classList.add('bento-ready'));
+    setTimeout(() => {
       bentoGrid.classList.remove('bento-intro');
-      startBentoFocusTour();
-    }, total + 80);
+      startTour();
+    }, 1140);
   }
 
-  const BENTO_STEP_MS = 1080;
-  const BENTO_GAP_MS = 170;
-
-  function startBentoFocusTour(){
-    if (bentoTourActive) return;
-    bentoTourActive = true;
+  function startTour() {
+    if (tourActive) return;
+    tourActive = true;
     let t = 0;
+    const STEP = 1080, GAP = 170;
 
-    for (let i = 0; i < bentoStates.length; i++){
-      bentoTourTimers.push(setTimeout(()=>{
-        bentoGrid.classList.remove(...bentoStates);
-        bentoGrid.classList.add(bentoStates[i]);
-        bentoTiles.forEach(el=>el.classList.remove('bento-focus'));
-        bentoTiles[i].classList.add('bento-focus');
+    for (let i = 0; i < states.length; i++) {
+      timers.push(setTimeout(() => {
+        bentoGrid.classList.remove(...states);
+        bentoGrid.classList.add(states[i]);
+        tiles.forEach(el => el.classList.remove('bento-focus'));
+        tiles[i].classList.add('bento-focus');
       }, t));
 
-      bentoTourTimers.push(setTimeout(()=>{
-        bentoGrid.classList.remove(...bentoStates);
-        bentoTiles.forEach(el=>el.classList.remove('bento-focus'));
-      }, t + BENTO_STEP_MS));
+      timers.push(setTimeout(() => {
+        bentoGrid.classList.remove(...states);
+        tiles.forEach(el => el.classList.remove('bento-focus'));
+      }, t + STEP));
 
-      t += BENTO_STEP_MS + BENTO_GAP_MS;
+      t += STEP + GAP;
     }
 
-    bentoTourTimers.push(setTimeout(()=>{
-      bentoGrid.classList.remove(...bentoStates);
-      bentoTourActive = false;
+    timers.push(setTimeout(() => {
+      bentoGrid.classList.remove(...states);
+      tourActive = false;
     }, t));
   }
 
-  const bentoEnter = (idx)=>{
-    if (bentoTourActive || bentoGrid.classList.contains('bento-intro')) return;
-    bentoGrid.classList.remove(...bentoStates);
-    bentoGrid.classList.add(bentoStates[idx]);
-    bentoTiles.forEach(t=>t.classList.remove('bento-focus'));
-    bentoTiles[idx].classList.add('bento-focus');
+  const enter = (i) => {
+    if (tourActive || bentoGrid.classList.contains('bento-intro')) return;
+    bentoGrid.classList.remove(...states);
+    bentoGrid.classList.add(states[i]);
+    tiles.forEach(t => t.classList.remove('bento-focus'));
+    tiles[i].classList.add('bento-focus');
   };
 
-  const bentoLeave = ()=>{
-    if (bentoTourActive || bentoGrid.classList.contains('bento-intro')) return;
-    bentoGrid.classList.remove(...bentoStates);
-    bentoTiles.forEach(t=>t.classList.remove('bento-focus'));
+  const leave = () => {
+    if (tourActive || bentoGrid.classList.contains('bento-intro')) return;
+    bentoGrid.classList.remove(...states);
+    tiles.forEach(t => t.classList.remove('bento-focus'));
   };
 
-  bentoTiles.forEach((t,i)=>{
-    t.addEventListener('mouseenter',()=> bentoEnter(i));
-    t.addEventListener('mouseleave',()=> bentoLeave());
-    t.addEventListener('click',(e)=>{
+  tiles.forEach((t, i) => {
+    t.addEventListener('mouseenter', () => enter(i));
+    t.addEventListener('mouseleave', leave);
+    t.addEventListener('click', (e) => {
       if (e.target.closest('.bento-cta')) return;
-      if (bentoTourActive || bentoGrid.classList.contains('bento-intro')) return;
-      bentoEnter(i);
+      if (tourActive || bentoGrid.classList.contains('bento-intro')) return;
+      enter(i);
     });
   });
 
-  const bentoDemoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        runBentoIntro();
-        bentoDemoObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  bentoDemoObserver.observe(bentoGrid);
+  observe('#bentoGrid', runIntro);
 }
 
-// Website Plan Pricing Cards Animation
-const pricingGrid = document.getElementById('pricingGrid');
-if (pricingGrid) {
-  const pricingObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          document.querySelectorAll('.pricing-card').forEach(card => {
-            card.classList.add('pricing-card-animate');
-          });
-        }, 100);
-        pricingObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.3,
-    rootMargin: '0px 0px -150px 0px'
+## ===============================
+## STICKY NAVBAR
+## ===============================
+const navbar = $('stickyNavbar');
+const menuToggle = $('menuToggle');
+const navbarLinks = $('navbarLinks');
+const navLinks = $$('.navbar-link');
+
+if (navbar && menuToggle) {
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.pageYOffset > 50);
   });
 
-  pricingObserver.observe(pricingGrid);
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navbarLinks.classList.toggle('active');
+  });
 
-// CTA Banner Animation
-const ctaBannerObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navbarLinks.classList.remove('active');
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!menuToggle.contains(e.target) && !navbarLinks.contains(e.target)) {
+      menuToggle.classList.remove('active');
+      navbarLinks.classList.remove('active');
     }
   });
-}, {
-  threshold: 0.25,
-  rootMargin: '0px 0px -80px 0px'
-});
-
-const ctaBanners = document.querySelectorAll('.cta-banner');
-ctaBanners.forEach(banner => {
-  ctaBannerObserver.observe(banner);
-});
-}
-// Sticky Navbar Functionality
-const stickyNavbar = document.getElementById('stickyNavbar');
-const menuToggle = document.getElementById('menuToggle');
-const navbarLinks = document.getElementById('navbarLinks');
-const navLinks = document.querySelectorAll('.navbar-link');
-
-// Add scrolled class on scroll
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-  const currentScroll = window.pageYOffset;
-
-  if (currentScroll > 50) {
-    stickyNavbar.classList.add('scrolled');
-  } else {
-    stickyNavbar.classList.remove('scrolled');
-  }
-
-  lastScroll = currentScroll;
-});
-
-// Mobile menu toggle
-menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('active');
-  navbarLinks.classList.toggle('active');
-});
-
-// Close mobile menu when clicking a link
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    menuToggle.classList.remove('active');
-    navbarLinks.classList.remove('active');
-
-    // Update active state
-    navLinks.forEach(l => l.classList.remove('active'));
-    link.classList.add('active');
-  });
-});
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-  if (!menuToggle.contains(e.target) && !navbarLinks.contains(e.target)) {
-    menuToggle.classList.remove('active');
-    navbarLinks.classList.remove('active');
-  }
-});
-const footerContactForm = document.getElementById('footerContactForm');
-const footerFormMessage = document.getElementById('footer-form-message');
-const footerMessageTextarea = document.getElementById('footer-message');
-
-let wordCountDisplay = null;
-
-function createWordCounter() {
-  if (!wordCountDisplay) {
-    wordCountDisplay = document.createElement('div');
-    wordCountDisplay.className = 'word-counter';
-    wordCountDisplay.style.cssText = 'margin-top: 8px; font-size: 12px; color: #64748b;';
-    footerMessageTextarea.parentElement.appendChild(wordCountDisplay);
-  }
 }
 
-function updateWordCount() {
-  const text = footerMessageTextarea.value.trim();
-  const words = text.length > 0 ? text.split(/\s+/).filter(w => w.length > 0) : [];
-  const count = words.length;
+## ===============================
+## FOOTER CONTACT FORM
+## ===============================
+const footerForm = $('footerContactForm');
+const footerMsg = $('footer-form-message');
+const footerTextarea = $('footer-message');
 
-  createWordCounter();
-  wordCountDisplay.textContent = `${count}/5 woorden (minimaal)`;
-  wordCountDisplay.style.color = count < 5 ? '#ef4444' : '#22c55e';
+if (footerForm && footerTextarea) {
+  let wordCounter = null;
 
-  if (count < 5) {
-    wordCountDisplay.textContent = `${count}/5 woorden (nog ${5 - count} nodig)`;
-  }
-}
+  function updateWordCount() {
+    const words = footerTextarea.value.trim().split(/\s+/).filter(w => w.length > 0);
+    const count = words.length;
 
-footerMessageTextarea.addEventListener('input', updateWordCount);
-updateWordCount();
-
-footerContactForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(footerContactForm);
-  const name = formData.get('name');
-  const email = formData.get('email');
-  const message = formData.get('message');
-
-  if (!name || !email || !message) {
-    showFooterMessage('error', 'Vul alle verplichte velden in.');
-    return;
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    showFooterMessage('error', 'Voer een geldig e-mailadres in.');
-    return;
-  }
-
-  const words = message.trim().split(/\s+/).filter(w => w.length > 0);
-  const wordCount = words.length;
-
-  if (wordCount === 0) {
-    showFooterMessage('error', 'Vul een bericht in.');
-    return;
-  }
-
-  if (wordCount < 5) {
-    showFooterMessage('error', 'Je bericht moet minimaal 5 woorden bevatten.');
-    return;
-  }
-
-  if (name.length < 2) {
-    showFooterMessage('error', 'Voer een geldige naam in.');
-    return;
-  }
-
-  const submitButton = footerContactForm.querySelector('.footer-form-submit');
-  const originalHTML = submitButton.innerHTML;
-  submitButton.disabled = true;
-  submitButton.innerHTML = '<svg class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 20px; height: 20px; animation: spin 1s linear infinite;"><circle cx="12" cy="12" r="10" opacity="0.25"></circle><path d="M12 2a10 10 0 0 1 10 10" opacity="0.75"></path></svg><span>Bezig met verzenden...</span>';
-
-  showFooterMessage('info', '⏳ We zijn uw aanvraag aan het behandelen. Bedankt voor uw geduld...');
-
-  try {
-    const response = await fetch('/api/send-email', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        message: message
-      })
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.error || 'Er is een fout opgetreden');
+    if (!wordCounter) {
+      wordCounter = document.createElement('div');
+      wordCounter.className = 'word-counter';
+      wordCounter.style.cssText = 'margin-top:8px;font-size:12px;color:#64748b;';
+      footerTextarea.parentElement.appendChild(wordCounter);
     }
 
-    showFooterMessage('success', '✅ Bedankt voor uw bericht! Uw aanvraag is succesvol ontvangen en wordt behandeld. We nemen binnen 24 uur contact met u op.');
-    footerContactForm.reset();
-    updateWordCount();
-  } catch (error) {
-    console.error('Footer form error:', error);
-    showFooterMessage('error', '❌ ' + (error.message || 'Er ging iets mis. Probeer het later opnieuw of neem telefonisch contact met ons op.'));
-  } finally {
-    submitButton.disabled = false;
-    submitButton.innerHTML = originalHTML;
+    wordCounter.textContent = count < 5 ? `${count}/5 woorden (nog ${5 - count} nodig)` : `${count}/5 woorden (minimaal)`;
+    wordCounter.style.color = count < 5 ? '#ef4444' : '#22c55e';
   }
-});
 
-function showFooterMessage(type, text) {
-  footerFormMessage.className = `footer-form-message ${type}`;
-  footerFormMessage.textContent = text;
-  footerFormMessage.style.display = 'block';
+  function showMsg(type, text) {
+    footerMsg.className = `footer-form-message ${type}`;
+    footerMsg.textContent = text;
+    footerMsg.style.display = 'block';
 
-  if (type === 'success') {
-    setTimeout(() => {
-      footerFormMessage.style.display = 'none';
-    }, 10000);
-  } else if (type === 'error') {
-    setTimeout(() => {
-      footerFormMessage.style.display = 'none';
-    }, 8000);
+    const timeout = type === 'success' ? 10000 : (type === 'error' ? 8000 : 0);
+    if (timeout) setTimeout(() => footerMsg.style.display = 'none', timeout);
   }
-}
-let expandedQuestionIndex = null;
 
-function toggleQuestion(index) {
-  const allButtons = document.querySelectorAll('.faq-question');
-  const allAnswers = document.querySelectorAll('.faq-answer');
+  footerTextarea.addEventListener('input', updateWordCount);
+  updateWordCount();
 
-  if (expandedQuestionIndex === index) {
-    allButtons[index].classList.remove('active');
-    allAnswers[index].classList.remove('active');
-    expandedQuestionIndex = null;
-  } else {
-    if (expandedQuestionIndex !== null) {
-      allButtons[expandedQuestionIndex].classList.remove('active');
-      allAnswers[expandedQuestionIndex].classList.remove('active');
+  footerForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(footerForm);
+    const name = fd.get('name');
+    const email = fd.get('email');
+    const message = fd.get('message');
+
+    if (!name || !email || !message) {
+      showMsg('error', 'Vul alle verplichte velden in.');
+      return;
     }
 
-    allButtons[index].classList.add('active');
-    allAnswers[index].classList.add('active');
-    expandedQuestionIndex = index;
-  }
-}
+    if (!validateEmail(email)) {
+      showMsg('error', 'Voer een geldig e-mailadres in.');
+      return;
+    }
 
-function animateFAQItems() {
-  const leftSection = document.querySelector('.faq-left-section');
-  const faqItems = document.querySelectorAll('.faq-item');
+    const wordCount = message.trim().split(/\s+/).filter(w => w.length > 0).length;
+    if (wordCount < 5) {
+      showMsg('error', 'Je bericht moet minimaal 5 woorden bevatten.');
+      return;
+    }
 
-  if (!leftSection || faqItems.length === 0) return;
+    if (name.length < 2) {
+      showMsg('error', 'Voer een geldige naam in.');
+      return;
+    }
 
-  const leftSectionAnimation = leftSection.getAnimations()[0];
+    const btn = footerForm.querySelector('.footer-form-submit');
+    const originalHTML = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M12 2a10 10 0 0 1 10 10" opacity=".75"/></svg><span>Bezig met verzenden...</span>';
 
-  if (leftSectionAnimation) {
-    leftSectionAnimation.finished.then(() => {
-      faqItems.forEach((item, index) => {
-        setTimeout(() => {
-          item.classList.add('fade-in');
-        }, index * 150);
+    showMsg('info', '⏳ We zijn uw aanvraag aan het behandelen. Bedankt voor uw geduld...');
+
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
       });
-    });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Er is een fout opgetreden');
+
+      showMsg('success', '✅ Bedankt voor uw bericht! Uw aanvraag is succesvol ontvangen en wordt behandeld. We nemen binnen 24 uur contact met u op.');
+      footerForm.reset();
+      updateWordCount();
+    } catch (error) {
+      console.error('Footer form error:', error);
+      showMsg('error', '❌ ' + (error.message || 'Er ging iets mis. Probeer het later opnieuw of neem telefonisch contact met ons op.'));
+    } finally {
+      restoreButton(btn, originalHTML);
+    }
+  });
+}
+
+## ===============================
+## FAQ SECTION
+## ===============================
+let expandedQ = null;
+
+function toggleQ(idx) {
+  const btns = $$('.faq-question');
+  const answers = $$('.faq-answer');
+
+  if (expandedQ === idx) {
+    btns[idx].classList.remove('active');
+    answers[idx].classList.remove('active');
+    expandedQ = null;
   } else {
-    faqItems.forEach((item, index) => {
-      setTimeout(() => {
-        item.classList.add('fade-in');
-      }, 800 + index * 150);
-    });
+    if (expandedQ !== null) {
+      btns[expandedQ].classList.remove('active');
+      answers[expandedQ].classList.remove('active');
+    }
+    btns[idx].classList.add('active');
+    answers[idx].classList.add('active');
+    expandedQ = idx;
   }
 }
 
 function initFAQ() {
-  const allButtons = document.querySelectorAll('.faq-question');
+  const btns = $$('.faq-question');
+  btns.forEach((btn, i) => btn.addEventListener('click', () => toggleQ(i)));
 
-  allButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      toggleQuestion(index);
-    });
-  });
+  const leftSection = document.querySelector('.faq-left-section');
+  const items = $$('.faq-item');
 
-  animateFAQItems();
+  if (!leftSection || !items.length) return;
+
+  const anim = leftSection.getAnimations()[0];
+  const start = anim ? () => anim.finished.then(animateItems) : () => setTimeout(animateItems, 800);
+
+  function animateItems() {
+    items.forEach((item, i) => setTimeout(() => item.classList.add('fade-in'), i * 150));
+  }
+
+  start();
 }
 
-function loadFAQSection() {
-  const faqSection = document.querySelector('.faq-section');
-  if (!faqSection) return;
-
-  const faqObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        initFAQ();
-        faqObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '100px 0px 0px 0px'
-  });
-
-  faqObserver.observe(faqSection);
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadFAQSection);
-} else {
-  loadFAQSection();
-}
-// Professional Works Story Section - Dynamic Loading
-
-class WorksStoryAnimator {
-  constructor() {
-    this.hasAnimated = false;
-    this.observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    this.init();
-  }
-
-  init() {
-    this.observeSection();
-    this.observeElements();
-    this.observeCounters();
-    this.addSequentialAnimations();
-  }
-
-  // Observe main section for initial trigger
-  observeSection() {
-    const section = document.querySelector('.how-it-works-section');
-    if (!section) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !this.hasAnimated) {
-          this.hasAnimated = true;
-          entry.target.classList.add('section-visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    observer.observe(section);
-  }
-
-  // Observe individual elements for staggered animations
-  observeElements() {
-    const elements = document.querySelectorAll('.step-card, .visual-wrapper, .kpi-card');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('element-visible');
-          }, 100);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, this.observerOptions);
-
-    elements.forEach(el => observer.observe(el));
-  }
-
-  // Smooth counter animation with easing
-  animateCounter(element, target) {
-    const duration = 1800;
-    const frameRate = 1000 / 60;
-    const totalFrames = Math.round(duration / frameRate);
-    let frame = 0;
-
-    const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
-
-    const updateCounter = () => {
-      frame++;
-      const progress = easeOutQuart(frame / totalFrames);
-      const current = Math.round(progress * target);
-
-      element.textContent = current;
-
-      if (frame < totalFrames) {
-        requestAnimationFrame(updateCounter);
-      } else {
-        element.textContent = target;
-      }
-    };
-
-    updateCounter();
-  }
-
-  // Observe and animate counters
-  observeCounters() {
-    const counters = document.querySelectorAll('.counter');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const counter = entry.target;
-          const target = parseInt(counter.dataset.target);
-          counter.textContent = '0';
-
-          setTimeout(() => {
-            this.animateCounter(counter, target);
-          }, 400);
-
-          observer.unobserve(counter);
-        }
-      });
-    }, { threshold: 0.6 });
-
-    counters.forEach(counter => observer.observe(counter));
-  }
-
-  // Add sequential animations for steps
-  addSequentialAnimations() {
-    const steps = document.querySelectorAll('.step-card');
-    steps.forEach((step, index) => {
-      step.style.setProperty('--animation-delay', `${index * 0.15}s`);
-    });
-
-    const kpis = document.querySelectorAll('.kpi-card');
-    kpis.forEach((kpi, index) => {
-      kpi.style.setProperty('--animation-delay', `${index * 0.1}s`);
-    });
-  }
-
-  // Add parallax effect on scroll (subtle)
-  addParallaxEffect() {
-    const laptop = document.querySelector('.laptop-mockup');
-    if (!laptop) return;
-
-    let ticking = false;
-
-    const updateParallax = () => {
-      const scrolled = window.pageYOffset;
-      const rect = laptop.getBoundingClientRect();
-
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        const offset = (scrolled - rect.top) * 0.05;
-        laptop.style.transform = `translateY(${offset}px)`;
-      }
-
-      ticking = false;
-    };
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    });
-  }
-}
-
-// Initialize on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    new WorksStoryAnimator();
-  });
-} else {
-  new WorksStoryAnimator();
+const faqSection = document.querySelector('.faq-section');
+if (faqSection) {
+  observe('.faq-section', initFAQ, { threshold: 0.1, rootMargin: '100px 0px 0px 0px' });
 }
